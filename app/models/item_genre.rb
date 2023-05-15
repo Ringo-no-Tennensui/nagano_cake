@@ -1,0 +1,2 @@
+class ItemGenre < ApplicationRecord
+end
