@@ -38,3 +38,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+
+/spec/factories/items.rb
+/spec/factories/users.rb
+/spec/models/rails_helper.rb
+/spec/models/spec_helper.rb
