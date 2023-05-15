@@ -1,0 +1,26 @@
+ja:
+    enums:
+      order:
+        payment:
+          credit: "クレジットカード"
+          bank: "銀行振込"
+        order_status:
+          wait: "入金待ち"
+          check: "入金確認"
+          making: "制作中"
+          standby: "発送準備中"
+          sent: "発送済み"
+      order_detail:
+        task_status:
+          impossible: "着手不可"
+          stay: "制作待ち"
+          maiking: "制作中"
+          complete: "制作完了"
+      customer:
+        member_status:
+          exist: "有効"
+          withdraw: "退会"
+      item:
+        sales_status:
+          sold_out: "売切れ"
+          sale: "販売中"
