@@ -4,13 +4,13 @@
           <a class ="navbar-brand" href "/" >
             <i class="fa-duotone fa-cake-slice"></i>
           </a>
-         
+
           <div class ="collapse navbar-collapse" >
             <ul class ="navber-nav ml-auto">
-              
+
               <!--管理者がログインしていたら-->
               <% if admin_signed_in? %>
-               
+
                <li>
                 <%= link_to admin_items_path, class: "nav-link text-light" do %>
                   商品一覧
@@ -34,40 +34,40 @@
                   ジャンル一覧
                 <% end %>
               </li>
-               
+
                <li>
                 <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
                   ログアウト
                 <% end %>
               </li>
-              
-                
+
+
               <!--顧客がログインしていたら-->
-              <% elsif customers_signed_in? %>
-              
+              <% elsif customer_signed_in? %>
+
                 <p>
                   ようこそ <%= current_cutomer.last_name %> さん!
                 </p>
-                
-                
+
+
                 <li>
                   <%= link_to customers_mypage_path, class: "nav-link text-light" do %>
                     マイページ
                   <% end %>
                 </li>
-  
+
                 <li>
                   <%= link_to items_path, class: "nav-link text-light" do %>
                     商品一覧
                   <% end %>
                 </li>
-  
+
                 <li>
                   <%= link_to cart_items_path, class: "nav-link text-light" do %>
                     カート
                   <% end %>
                 </li>
-  
+
                 <li>
                   <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
                     ログアウト
@@ -76,36 +76,35 @@
 
               <!--ログイン前画面-->
               <% else %>
-              
+
 
                 <li>
-                  <%= link_to about_path, class: "nav-link text-light" do %>
+                  <%= link_to about_path, class: "nav-link text-dark" do %>
                     about
                   <% end %>
                 </li>
-  
+
                 <li>
-                  <%= link_to items_path class: "nav-link text-light" do %>
+                  <%= link_to items_path, class: "nav-link text-dark" do %>
                     商品一覧
                   <% end %>
                 </li>
-  
+
                 <li>
-                  <%= link_to new_customer_registration_path, class: "nav-link text-light" do %>
+                  <%= link_to new_customer_registration_path, class: "nav-link text-dark" do %>
                     新規登録
                   <% end %>
                 </li>
-  
+
                 <li>
-                  <%= link_to new_customer_session_path, class: "nav-link text-light" do %>
+                  <%= link_to new_customer_session_path, class: "nav-link text-dark" do %>
                     ログイン
                   <% end %>
                 </li>
-              
+
               <% end %>
 
             </ul>
           </div>
         </div>
       </nav>
-    
