@@ -6,7 +6,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-
+    @public = Public.new
   end
 
   #POST /resource
