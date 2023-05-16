@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2023_05_15_075045) do
     t.string "post_code", null: false
     t.text "address", null: false
     t.string "phone_number", null: false
-    t.boolean "member_status", default: false, null: false
+    t.boolean "menber_status", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
