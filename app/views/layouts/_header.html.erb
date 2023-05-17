@@ -1,110 +1,116 @@
-　　　<nav class ="navbar navbar-expand-lg ">
-        <div class ="container">
-          <!--ロゴ-->
-          <a class ="navbar-brand" href "/" >
-            <i class="fa-duotone fa-cake-slice"></i>
-          </a>
 
-          <div class ="collapse navbar-collapse" >
-            <ul class ="navber-nav ml-auto">
+<nav class="navbar navbar-expand-lg bg-info ">
+  <div class="container-md">
+    <div class="mx-3">
+      <!--ロゴ-->
+        <% if admin_signed_in? %>
+        <%= link_to image_tag("nagano_cake.png"),admin_root_path, width: '50%', height: '50%' %>
+        <% else %>
+        <%= link_to image_tag("nagano_cake.png"),root_path, width: '50%', height: '50%' %>
+        <% end %>
+    </div>
+    <h1 class="text-center mt-3" style="font-family: 'Sacramento', cursive;">Nagano Cake</h1>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
 
-              <!--管理者がログインしていたら-->
-              <% if admin_signed_in? %>
+        <!--管理者がログインしていたら-->
+        <% if admin_signed_in? %>
 
-               <li>
-                <%= link_to admin_items_path, class: "nav-link text-light" do %>
-                  商品一覧
-                <% end %>
-              </li>
+        <li>
+          <%= link_to admin_items_path, class: "nav-link text-light" do %>
+            商品一覧
+          <% end %>
+        </li>
 
-              <li>
-                <%= link_to admin_customers_path, class: "nav-link text-light" do %>
-                  会員一覧
-                <% end %>
-              </li>
+        <li>
+          <%= link_to admin_customers_path, class: "nav-link text-light" do %>
+            会員一覧
+          <% end %>
+        </li>
 
-              <li>
-                <%= link_to admin_path, class: "nav-link text-light" do %>
-                  注文履歴一覧
-                <% end %>
-              </li>
+        <li>
+          <%= link_to admin_root_path, class: "nav-link text-light" do %>
+            注文履歴一覧
+          <% end %>
+        </li>
 
-              <li>
-                <%= link_to admin_genres_path, class: "nav-link text-light" do %>
-                  ジャンル一覧
-                <% end %>
-              </li>
+        <li>
+          <%= link_to admin_genres_path, class: "nav-link text-light" do %>
+            ジャンル一覧
+          <% end %>
+        </li>
 
-               <li>
-                <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
-                  ログアウト
-                <% end %>
-              </li>
-
-
-              <!--顧客がログインしていたら-->
-              <% elsif customer_signed_in? %>
-
-                <p>
-                  ようこそ <%= current_cutomer.last_name %> さん!
-                </p>
+         <li>
+          <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
+            ログアウト
+          <% end %>
+        </li>
 
 
-                <li>
-                  <%= link_to customers_mypage_path, class: "nav-link text-light" do %>
-                    マイページ
-                  <% end %>
-                </li>
+        <!--顧客がログインしていたら-->
+        <% elsif customer_signed_in? %>
 
-                <li>
-                  <%= link_to items_path, class: "nav-link text-light" do %>
-                    商品一覧
-                  <% end %>
-                </li>
-
-                <li>
-                  <%= link_to cart_items_path, class: "nav-link text-light" do %>
-                    カート
-                  <% end %>
-                </li>
-
-                <li>
-                  <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
-                    ログアウト
-                  <% end %>
-                </li>
-
-              <!--ログイン前画面-->
-              <% else %>
+          <p class="mr-5 pr-5">
+            ようこそ <%= current_customer.last_name %> さん!
+          </p>
 
 
-                <li>
-                  <%= link_to about_path, class: "nav-link text-dark" do %>
-                    about
-                  <% end %>
-                </li>
 
-                <li>
-                  <%= link_to items_path, class: "nav-link text-dark" do %>
-                    商品一覧
-                  <% end %>
-                </li>
+          <li>
+            <%= link_to customers_mypage_path, class: "nav-link text-light" do %>
+              マイページ
+            <% end %>
+          </li>
 
-                <li>
-                  <%= link_to new_customer_registration_path, class: "nav-link text-dark" do %>
-                    新規登録
-                  <% end %>
-                </li>
+          <li>
+            <%= link_to items_path, class: "nav-link text-light" do %>
+              商品一覧
+            <% end %>
+          </li>
 
-                <li>
-                  <%= link_to new_customer_session_path, class: "nav-link text-dark" do %>
-                    ログイン
-                  <% end %>
-                </li>
+          <li>
+            <%= link_to cart_items_path, class: "nav-link text-light" do %>
+              カート
+            <% end %>
+          </li>
 
-              <% end %>
+          <li>
+            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
+              ログアウト
+            <% end %>
+          </li>
 
-            </ul>
-          </div>
-        </div>
-      </nav>
+        <!--ログイン前画面-->
+        <% else %>
+
+
+          <li>
+            <%= link_to about_path, class: "nav-link text-dark" do %>
+              about
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to items_path, class: "nav-link text-dark" do %>
+              商品一覧
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to new_customer_registration_path, class: "nav-link text-dark" do %>
+              新規登録
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to new_customer_session_path, class: "nav-link text-dark" do %>
+              ログイン
+            <% end %>
+          </li>
+
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+</nav>
