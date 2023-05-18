@@ -1,2 +1,78 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container-md">
+  <!--エラー表示-->
+  <%= flash[:alert] %>
+  <h2>商品新規登録</h2>
+  <table>
+  <%= form_with model: @item, url:admin_items_path, metod: :post, local: true do |f| %>
+    <tr>
+      <!--商品画像フォーム-->
+      <div class="form-group">
+        <td><h4>商品画像</h4></td>
+        <td>
+          <% f.label :Item_Image %>
+          <%= f.file_field :image, accept: "image/*" %>
+        </td>
+      </div>
+    </tr>
+    <tr>
+      <!--商品名フォーム-->
+      <div class="form-group">
+        <td><h4>商品名</h4></td>
+        <td>
+          <%= f.text_field :item_name, placeholder: "商品名", class:"form-control" %>
+        </td>
+      </div>
+    </tr>
+    <tr>
+      <!--商品説明フォーム-->
+      <div class="form-group">
+        <td><h4>商品説明</h4></td>
+        <td>
+          <%= f.text_area :item_explanation, placeholder: "ここに説明文を記述します", class:"form-control", rows:"5" %>
+        </td>
+      </div>
+    </tr>
+    <tr>
+      <!--ジャンル選択フォーム-->
+      <div class="form-group">
+        <td><h4>ジャンル</h4></td>
+        <td>
+          <%#= f.collection_select :genre, ItemGenre.all, :genre, :id,{prompt: "--選択してください--"} %>
+          <%= f.select :genre_id, options_from_collection_for_select(ItemGenre.all, :id, :genre),{prompt: "--選択してください--"} %>
+        </td>
+      </div>
+    </tr>
+    <tr>
+      <!--税込価格設定フォーム-->
+      <div class="form-group">
+      <td><h4>税込価格</h4></td>
+      <td>
+        <%= f.text_field :item_price, placeholder: "1000", class:"form-control" %>
+      </td>
+      <td>円</td>
+      </div>
+    </tr>
+    <tr>
+      <!--販売ステータス選択フォーム-->
+      <div class="form-group">
+      <td><h4>販売ステータス</h4></td>
+      <td>
+      　<%= f.radio_button :sales_status, Item.sales_statuses.key(true), checked: true %>
+        <%= f.label :sales_status_sale, Item.sales_statuses_i18n[:sale] %>
+        <%= f.radio_button :sales_status, Item.sales_statuses.key(false), checked: false %>
+        <%= f.label :sales_status_sold_out, Item.sales_statuses_i18n[:sold_out] %>
+      </td>
+      </div>
+    </tr>
+    <tr>
+      <!--登録ボタン-->
+      <div class="form-group">
+        <td></td>
+        <td>
+      <%= f.submit '新規登録', class:"btn btn-sm btn-success" %>
+        </td>
+      </div>
+    </tr>
+    <% end %>
+  </table>
+</div>
