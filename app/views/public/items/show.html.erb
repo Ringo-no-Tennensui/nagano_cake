@@ -1,0 +1,45 @@
+<div class="container">
+
+ <div class="row">
+
+  <!--ジャンル検索画面-->
+
+  <div class="col-md-2">
+
+   <%= render 'genre', genres: @genres %>
+
+  </div>
+
+  <!--商品詳細画面-->
+
+  <div class='col-md-10'>
+
+   <%= image_tag item.get_image, size:'200x100' %>
+
+   <%= item.item_name %>
+
+   <%= item.item_explanation %>
+
+   <p>¥<%= item.item_price.to_s(:delimited, delimiter: ',') %>（税抜き）</p>
+
+   <% if customer_signed_in %>
+
+    <%= form_with model:@cart_items url: cart_items_path, method: :post do |f| %>
+
+     <%= f.hidden_field :customer_id, :value => customer_id %>
+
+     <%= f.hidden_field :item_id, :value => item_id %>
+
+     <%= f.select :count, *[1..10] %>
+
+    <%= f.submit "カートに入れる"%>
+
+   <% end %>
+   
+   <% end %>
+
+  </div>
+
+ </div>
+
+</div>
