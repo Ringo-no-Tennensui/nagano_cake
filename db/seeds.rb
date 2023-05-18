@@ -25,9 +25,90 @@ p '==================== item ===================='
 item1 = Item.new(
   item_name: "フロランタン",
   item_explanation: "フロランタンとは厚焼きのサブレ生地にキャラメルでコーティングした​ スライスアーモンドをのせて香ばしく焼き上げたフランス菓子です。",
-  item_price: 200,
+  item_price: 300,
   item_genre_id: 1,
   sales_status: true
-)
-item1.image.attach(io: File.open(Rails.root.join('app/assets/images/yakigashi_1.png')), filename: 'yakigashi_1.png')
-item1.save!
+  )
+  item1.image.attach(io: File.open(Rails.root.join('app/assets/images/yakigashi_1.png')), filename: 'yakigashi_1.png')
+  item1.save!
+item2 = Item.new(
+  item_name: "オペラ",
+  item_explanation: "ハイカカオチョコクリームとホワイトチョコクリームの2つのおいしさが一度に味わえるケーキ。",
+  item_price: 500,
+  item_genre_id: 2,
+  sales_status: true
+  )
+  item2.image.attach(io: File.open(Rails.root.join('app/assets/images/cake_2.png')), filename: 'cake_2.png')
+  item2.save!
+item3 = Item.new(
+  item_name: "フィグ",
+  item_explanation: "チョコスポンジ、チョコガナッシュ、チョコクリームを重ねた層に、キャラパキチョコを埋めました。",
+  item_price: 1500,
+  item_genre_id: 2,
+  sales_status: true
+  )
+  item3.image.attach(io: File.open(Rails.root.join('app/assets/images/cake_1.png')), filename: 'cake_1.png')
+  item3.save!
+item4 = Item.new(
+  item_name: "エイタロウ",
+  item_explanation: "砂糖だけではなく、はちみつを入れるとコクのある味わいのキャンディー。",
+  item_price: 300,
+  item_genre_id: 4,
+  sales_status: true
+  )
+  item4.image.attach(io: File.open(Rails.root.join('app/assets/images/candy2.png')), filename: 'candy2.png')
+  item4.save!
+item5 = Item.new(
+  item_name: "カファレル",
+  item_explanation: "カファレルのキャンディは、目を引く華やかなパッケージが魅力です。",
+  item_price: 300,
+  item_genre_id: 4,
+  sales_status: true
+  )
+  item5.image.attach(io: File.open(Rails.root.join('app/assets/images/candy1.png')), filename: 'candy1.png')
+  item5.save!
+item6 = Item.new(
+  item_name: "パパブブレ",
+  item_explanation: "パパブブレは、2003年にスタートしたスペイン・バルセロナ発のキャンディ",
+  item_price: 500,
+  item_genre_id: 4,
+  sales_status: true
+  )
+  item6.image.attach(io: File.open(Rails.root.join('app/assets/images/candy_4.png')), filename: 'candy_4.png')
+  item6.save!
+item7 = Item.new(
+  item_name: "チョコレート グレーズド",
+  item_explanation: "オリジナル・グレーズドに、なめらかチョコレートをアイシング。チョコレート大好きな方におすすめ。",
+  item_price: 400,
+  item_genre_id: 1,
+  sales_status: true
+  )
+  item7.image.attach(io: File.open(Rails.root.join('app/assets/images/chocolate_doughnut.png')), filename: 'chocolate_doughnut.png')
+  item7.save!
+item8 = Item.new(
+  item_name: "オリジナル・グレーズド",
+  item_explanation: "温めるとおいしさがとろ〜り深まり、優しい甘さが口の中に広がります。",
+  item_price: 400,
+  item_genre_id: 1,
+  sales_status: true
+  )
+  item8.image.attach(io: File.open(Rails.root.join('app/assets/images/red_doughnut.png')), filename: 'red_doughnut.png')
+  item8.save!
+item9 = Item.new(
+  item_name: "フレッシュクリームプリン",
+  item_explanation: "1本1本手作りにこだわったプリンはお土産にもぴったり！ じっくり丁寧に蒸し上げたプリンはとろ～りなめらかで昔懐かしい味わい。",
+  item_price: 400,
+  item_genre_id: 3,
+  sales_status: true
+  )
+  item9.image.attach(io: File.open(Rails.root.join('app/assets/images/purine_2.png')), filename: 'purine_2.png')
+  item9.save!
+item10 = Item.new(
+  item_name: "オレンジケーキ",
+  item_explanation: "オレンジの爽やかな味わいとフレッシュバターの芳醇な香りをお楽しみいただけます。",
+  item_price: 500,
+  item_genre_id: 2,
+  sales_status: true
+  )
+  item10.image.attach(io: File.open(Rails.root.join('app/assets/images/cut_cake_1.png')), filename: 'cut_cake_1.png')
+  item10.save!
