@@ -10,9 +10,9 @@ class Admin::ItemsController < ApplicationController
 
   def create
   @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       redirect_to admin_item_path(@item)
-      flash[:notice] = "#{@item.name}を追加しました"
+      flash[:notice] = "#{@item.item_name}を追加しました"
     else
       flash[:alert] = "追加に失敗しました"
       @item = Item.new(item_params)
@@ -38,7 +38,7 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-  params.require(:item).permit(:item_name, :image, :item_explanation, :item_price, :sales_status, :genre_id)
+  params.require(:item).permit(:item_name, :image, :item_explanation, :item_price, :sales_status, :item_genre_id)
   end
 
 end

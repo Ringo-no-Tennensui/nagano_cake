@@ -12,7 +12,7 @@ class Admin::GenresController < ApplicationController
       redirect_to request.referer
     else
       @genres = ItemGenre.all
-      rener :index
+      render :index
     end
   end
 
