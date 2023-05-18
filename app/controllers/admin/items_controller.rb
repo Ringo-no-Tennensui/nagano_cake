@@ -5,16 +5,17 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
-  @items = Item.new
+  @item = Item.new
   end
 
   def create
-  @items = Item.new(item_params)
+  @item = Item.new(item_params)
     if @item.save
-      flash[:notice] = "#{@item.name}を追加しました"
       redirect_to admin_item_path(@item)
+      flash[:notice] = "#{@item.name}を追加しました"
     else
-      flash[:alert] = "ジャンル名を入力してください"
+      flash[:alert] = "追加に失敗しました"
+      @item = Item.new(item_params)
       redirect_to new_admin_item_path
     end
   end
@@ -29,7 +30,7 @@ class Admin::ItemsController < ApplicationController
       flash[:notice] = "#{@item.name}を編集しました"
       redirect_to admin_item_path(@item.id)
     else
-      flash[:alert] = "ジャンル名を入力してください"
+      flash[:alert] = "編集に失敗しました"
       redirect_to edit_admin_item_path(@item)
     end
   end
