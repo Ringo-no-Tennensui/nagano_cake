@@ -26,7 +26,8 @@ item1 = Item.new(
   item_name: "フロランタン",
   item_explanation: "フロランタンとは厚焼きのサブレ生地にキャラメルでコーティングした​ スライスアーモンドをのせて香ばしく焼き上げたフランス菓子です。",
   item_price: 200,
-  genre_id: 1
+  item_genre_id: 1,
+  sales_status: true
 )
 item1.image.attach(io: File.open(Rails.root.join('app/assets/images/yakigashi_1.png')), filename: 'yakigashi_1.png')
 item1.save!
