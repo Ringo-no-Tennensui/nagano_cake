@@ -4,7 +4,7 @@ class Item < ApplicationRecord
 
   has_many :carts, dependent: :destroy
   has_many :order_details, dependent: :destroy
-  belongs_to :item_genres
+  belongs_to :item_genre
 
   validates :item_name, presence: true
   validates :item_explanation,length: { in: 1..140 }
