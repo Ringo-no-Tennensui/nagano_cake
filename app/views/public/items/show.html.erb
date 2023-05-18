@@ -24,7 +24,7 @@
 
    <% if customer_signed_in %>
 
-    <%= form_with model:@cart_items url: cart_items_path, method: :post do |f| %>
+    <%= form_with model:@carts url: carts_path, method: :post do |f| %>
 
      <%= f.hidden_field :customer_id, :value => customer_id %>
 
