@@ -1,4 +1,4 @@
-class Public::CartItemsController < ApplicationController
+class Public::CartsController < ApplicationController
   def index
   end
   
