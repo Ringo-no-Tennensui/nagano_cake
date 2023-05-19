@@ -17,9 +17,9 @@ Rails.application.routes.draw do
     post 'orders/confirm'
     get 'orders/thanks'
     resources :carts, only:[:index, :create, :update, :destroy]
-    delete 'cart_items/destroy_all'
+    delete '/carts/destroy_all' => 'carts#destroy_all', as: 'destroy_all'
     resource :customers, only:[:edit, :update]
-    get 'customers/mypage' =>'customers#show'
+    get 'customers/mypage' => 'customers#show'
     get 'customers/confirm'
     patch 'customers/withdraw'
     resources :items, only:[:show, :index]
@@ -40,4 +40,5 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end

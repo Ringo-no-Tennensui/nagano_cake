@@ -1,5 +1,8 @@
 class Public::CartsController < ApplicationController
   def index
+    @carts = Cart.all
+    # カート内の合計金額 @total
+    @total = @carts.inject(0) { |sum, cart| sum + cart.subtotal }
   end
 
   def create
@@ -12,9 +15,15 @@ class Public::CartsController < ApplicationController
   end
 
   def destroy
+    cart = Cart.find(params[:id])
+    cart.destroy
+    redirect_to carts_path
   end
 
   def destroy_all
+    cart = Cart.all
+    cart.destroy
+    redirect_to carts_path
   end
 
   private

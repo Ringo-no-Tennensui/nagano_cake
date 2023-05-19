@@ -15,7 +15,7 @@
         <div class = "col-md3">
           <a href="/items/<%= item.id %>">
             <%= item.item_name %>
-            <p>¥<%= item.item_price.to_s(:delimited, delimiter: ',') %></p></p>
+            <p>¥<%= item.tax_price.to_s(:delimited, delimiter: ',') %></p></p>
           </a>
         </div>
        <% end %>

@@ -9,4 +9,8 @@ class Item < ApplicationRecord
   validates :item_name, presence: true
   validates :item_explanation,length: { in: 1..140 }
   validates :item_price, presence: true,numericality: { only_integer: true }
+  
+  def tax_price
+    (item_price * 1.1).floor
+  end
 end
