@@ -16,8 +16,12 @@ Rails.application.routes.draw do
     resources :orders, only:[:new, :index, :show, :create]
     post 'orders/confirm'
     get 'orders/thanks'
-    resources :carts, only:[:index, :create, :update, :destroy]
-    delete '/carts/destroy_all' => 'carts#destroy_all', as: 'destroy_all'
+    resources :carts, only:[:index, :create, :update, :destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    #delete '/carts/destroy_all' => 'carts#destroy_all', as: 'destroy_all'
     resource :customers, only:[:edit, :update]
     get 'customers/mypage' => 'customers#show'
     get 'customers/confirm'
@@ -25,6 +29,7 @@ Rails.application.routes.draw do
     resources :items, only:[:show, :index]
     root to: 'homes#top'
     get '/about' =>'homes#about'
+
   end
 
 # 顧客用
