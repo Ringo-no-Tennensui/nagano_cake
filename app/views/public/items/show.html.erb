@@ -11,7 +11,7 @@
 
     <%= @item.item_explanation %></br>
 
-    <p>¥<%= @item.item_price.to_s(:delimited, delimiter: ',') %>（税抜き）</p>
+    <p>¥<%= @item.tax_price.to_s(:delimited, delimiter: ',') %>（税込）</p>
 
     <% if customer_signed_in? %>
 
