@@ -1,2 +1,25 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
+<div class="container-md">
+  <!--エラー表示-->
+  <%= flash[:alert] %>
+  <h2>ジャンル編集</h2>
+  <!--更新メソッドを指定したフォーム-->
+  <%= form_with model: @genres, url:admin_genre_path, method: :patch, local: true do |f| %>
+  <table>
+    <tr>
+      <div class="form-group">
+      <td>
+        <% f.label :genre %>
+        ジャンル名
+      </td>
+      <td>
+        <!--変更前のジャンル名をプレイスホルダーに表示-->
+        <%= f.text_field :genre, placeholder: @genres.genre, class: "form-control" %>
+      </td>
+      <td>
+        <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
+      </td>
+      </div>
+    </tr>
+  </table>
+  <% end %>
+</div>
