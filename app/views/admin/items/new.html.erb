@@ -37,15 +37,14 @@
       <div class="form-group">
         <td><h4>ジャンル</h4></td>
         <td>
-          <%#= f.collection_select :genre, ItemGenre.all, :genre, :id,{prompt: "--選択してください--"} %>
           <%= f.select :item_genre_id, options_from_collection_for_select(ItemGenre.all, :id, :genre),{prompt: "--選択してください--"} %>
         </td>
       </div>
     </tr>
     <tr>
-      <!--税込価格設定フォーム-->
+      <!--税抜価格設定フォーム-->
       <div class="form-group">
-      <td><h4>税込価格</h4></td>
+      <td><h4>税抜価格</h4></td>
       <td>
         <%= f.text_field :item_price, placeholder: "1000", class: "form-control" %>
       </td>
