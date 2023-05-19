@@ -6,6 +6,8 @@ class Item < ApplicationRecord
   has_many :order_details, dependent: :destroy
   belongs_to :item_genre
 
+
+
   validates :item_name, presence: true
   validates :item_explanation,length: { in: 1..140 }
   validates :item_price, presence: true,numericality: { only_integer: true }

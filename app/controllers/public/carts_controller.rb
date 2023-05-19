@@ -6,16 +6,19 @@ class Public::CartsController < ApplicationController
   end
 
   def create
-    @cart = Cart.new(cart_params)
-    if current_customer.carts.find_by(@cart.item_id)
-      
-      
-      redirect_to items_path
-      else
-      @cart.save
-    redirect_to items_path
-    end
+
+  @cart = Cart.new(cart_params)
+  if current_customer.carts.find_by(item_id: @cart.item_id)
+     cart = current_customer.carts.find_by(item_id: @cart.item_id)
+     cart.count += @cart.count.to_i
+     cart.save
+   redirect_to carts_path
+  else
+   @cart.save
+   redirect_to carts_path
   end
+ end
+
 
   def update
     @cart= Cart.find(params[:id])
@@ -34,9 +37,6 @@ class Public::CartsController < ApplicationController
   def destroy_all
     current_customer.carts.destroy_all
     redirect_to carts_path
-    #cart = Cart.all
-    #cart.destroy
-    #redirect_to carts_path
   end
 
 
