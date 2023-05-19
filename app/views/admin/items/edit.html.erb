@@ -1,2 +1,77 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<div class="container-md">
+  <!--エラーメッセージ表示-->
+  <%= flash[:alert] %>
+  <h2>商品編集</h2>
+  <%= form_with model: @item, url:admin_item_path, method: :patch, local: true do |f| %>
+　<table>
+    <tr>
+      <!--商品画像フォーム-->
+      <div class="form-group">
+        <td><h4>商品画像</h4></td>
+        <td>
+          <% f.label :Item_Image %>
+          <%= f.file_field :image, accept: "image/*" %>
+        </td>
+      </div>
+    </tr>
+    <tr>
+      <!--商品名フォーム-->
+      <div class="form-group">
+        <td><h4>商品名</h4></td>
+        <td>
+          <%= f.text_field :item_name, placeholder: @item.item_name, class: "form-control" %>
+        </td>
+      </div>
+    </tr>
+    <tr>
+      <!--商品説明フォーム-->
+      <div class="form-group">
+        <td><h4>商品説明</h4></td>
+        <td>
+          <%= f.text_area :item_explanation, placeholder: @item.item_explanation, class: "form-control", rows: "5" %>
+        </td>
+      </div>
+    </tr>
+    <tr>
+      <!--ジャンル選択フォーム-->
+      <div class="form-group">
+        <td><h4>ジャンル</h4></td>
+        <td>
+          <%= f.select :item_genre_id, options_from_collection_for_select(ItemGenre.all, :id, :genre) %>
+        </td>
+      </div>
+    </tr>
+    <tr>
+      <!--税抜価格設定フォーム-->
+      <div class="form-group">
+      <td><h4>税抜価格</h4></td>
+      <td>
+        <%= f.text_field :item_price, placeholder: @item.item_price, class: "form-control" %>
+      </td>
+      <td>円</td>
+      </div>
+    </tr>
+    <tr>
+      <!--販売ステータス選択フォーム-->
+      <div class="form-group">
+      <td><h4>販売ステータス</h4></td>
+      <td>
+      　<%= f.radio_button :sales_status, Item.sales_statuses.key(true) %>
+        <%= f.label :sales_status_sale, Item.sales_statuses_i18n[:sale] %>
+        <%= f.radio_button :sales_status, Item.sales_statuses.key(false) %>
+        <%= f.label :sales_status_sold_out, Item.sales_statuses_i18n[:sold_out] %>
+      </td>
+      </div>
+    </tr>
+    <tr>
+      <!--登録ボタン-->
+      <div class="form-group">
+        <td></td>
+        <td>
+        <%= f.submit '変更を保存', class: "btn btn-sm btn-success" %>
+        </td>
+      </div>
+    </tr>
+  </table>
+  <% end %>
+</div>

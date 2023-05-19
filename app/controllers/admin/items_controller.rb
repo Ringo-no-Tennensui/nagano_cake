@@ -24,14 +24,18 @@ class Admin::ItemsController < ApplicationController
   @item = Item.find(params[:id])
   end
 
+  def edit
+  @item = Item.find(params[:id])
+  end
+
   def update
   @item = Item.find(params[:id])
     if @item.update(item_params)
-      flash[:notice] = "#{@item.name}を編集しました"
-      redirect_to admin_item_path(@item.id)
+      flash[:notice] = "#{@item.item_name}を編集しました"
+      redirect_to admin_item_path(@item)
     else
       flash[:alert] = "編集に失敗しました"
-      redirect_to edit_admin_item_path(@item)
+      render :edit
     end
   end
 

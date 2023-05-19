@@ -1,2 +1,92 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container-md">
+  <h2><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h2>
+  <table class="mt-5 mb-5">
+    <%= form_with model: @customer, url:admin_customer_path, metod: :patch, local: true do |f| %>
+    <tr>
+      <td>会員ID</td>
+      <td><%= @customer.id %></td>
+    </tr>
+    <tr>
+      <td>氏名</td>
+      <td>
+        <div class="field">
+            <% f.label :last_name %>
+            <%= f.text_field :last_name, placeholder: @customer.last_name %>
+        </div>
+      </td>
+      <td>
+        <div class="field">
+            <% f.label :first_name %>
+            <%= f.text_field :first_name, placeholder: @customer.first_name %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>フリガナ</td>
+      <td>
+        <div class="field">
+            <% f.label :last_name_kana %>
+            <%= f.text_field :last_name_kana, placeholder: @customer.last_name_kana %>
+        </div>
+      </td>
+      <td>
+        <div class="field">
+            <% f.label :first_name_kana %>
+            <%= f.text_field :first_name_kana, placeholder: @customer.first_name_kana %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>郵便番号</td>
+      <td>
+        <div class="field">
+          <% f.label :post_code %>
+          <%= f.text_field :post_code, placeholder: @customer.post_code %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td colspan="3">
+        <div class="field">
+          <% f.label :address %>
+          <%= f.text_field :address, size:58, placeholder: @customer.address %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>電話番号</td>
+      <td>
+        <div class="field">
+          <% f.label :phone_number %>
+          <%= f.text_field :phone_number, placeholder: @customer.phone_number %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td>
+        <div class="field">
+          <% f.label :email %>
+          <%= f.email_field :email, placeholder: @customer.email %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <div class="form-group">
+      <td>会員ステータス</td>
+      <td>
+      　<%= f.radio_button :member_status, Customer.member_statuses.key(false) %>
+        <%= f.label :member_status_exist, Customer.member_statuses_i18n[:exist] %>
+        <%= f.radio_button :member_status, Customer.member_statuses.key(true) %>
+        <%= f.label :member_status_withdraw, Customer.member_statuses_i18n[:withdraw] %>
+      </td>
+      </div>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit '変更を保存', class: "btn btn-sm btn-success" %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
