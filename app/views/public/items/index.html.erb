@@ -7,22 +7,23 @@
     <!--商品一覧画面-->
     <div class ="col-md-10">
       <div class ="title">
-        <p>商品一覧(全<%#= @item.count %>件</p>
+        <p>商品一覧(全<%= @items.count %>件</p>
       </div>
 
       <div class ="item-box">
-        <%# @items.limit(8).each do |item| %>
+        <% @items.limit(8).each do |item| %>
         <div class = "col-md3">
-          <a href="/items/<%#= item.id %>">
-            <%#= item.item_name %>
-            <p>¥<%#= item.item_price.to_s(:delimited, delimiter: ',') %></p></p>
+          <a href="/items/<%= item.id %>">
+            <%= item.item_name %>
+            <p>¥<%= item.item_price.to_s(:delimited, delimiter: ',') %></p></p>
           </a>
         </div>
-       <%# end %>
+       <% end %>
       </div>
     </div>
-      <div>
-        <%#= paginate @items %>
+      
+      <div class = "mx-auto">
+        <%= paginate @items %>
       </div>
     </div>
   </div>
