@@ -11,7 +11,7 @@
 <!--    <%#= @order.ships_name %>      #名前-->
 <!--   </td>-->
 <!--  </tr>-->
-  
+
   <h4>注文情報確認</h4><tr>
 <table>
   <th>商品名</th>
@@ -20,20 +20,20 @@
   <th>小計</th>
   </tr>
   <!--合計金額total初期化-->
-   <% total = 0 %> 
-      <% @carts.each do |cart| %> 
+   <% total = 0 %>
+      <% @carts.each do |cart| %>
         <tr>
           <td>
-            <%= image_tag @item.image, size: "80x80" %>
-            <%= cart.item.name %>
+            <%= image_tag @item.get_image, size: "80x80" %>
+            <%= cart.item.item_name %>
           </td>
-          <td><%= cart.tax_price.to_i %></td>
+          <td><%= cart.item.tax_price.to_i %></td>
           <td><%= cart.count %></td>
           <td>
-             <%= subtotal %>#小計を表示
+             <%= cart.subtotal %>
            </td>
          </tr>
-         <!--<% total += subtotal%> #アイテムごとに合計金額に加算-->
+         <!--<% total += cart.subtotal %> #アイテムごとに合計金額に加算-->
      <% end %>
 </table>
 
@@ -53,3 +53,4 @@
         <td><%= @order.pay_price %></td>
       </tr>
 </table>
+
