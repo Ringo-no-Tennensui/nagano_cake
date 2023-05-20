@@ -1,2 +1,55 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<!--<h4>注文情報確認</h4>-->
+<!-- <tr>-->
+<!--  <th>支払い方法</th>-->
+<!--  <td><%= @order.payment_i18n %></td>-->
+<!-- </tr>-->
+<!-- <tr>-->
+<!--   <th>お届け先</th>-->
+<!--   <td>-->
+<!--    <%#= @order.ships_post_number %> #郵便番号-->
+<!--    <%#= @order.ships_address %>　 #住所-->
+<!--    <%#= @order.ships_name %>      #名前-->
+<!--   </td>-->
+<!--  </tr>-->
+  
+  <h4>注文情報確認</h4><tr>
+<table>
+  <th>商品名</th>
+  <th>単価(税込)</th>
+  <th>数量</th>
+  <th>小計</th>
+  </tr>
+  <!--合計金額total初期化-->
+   <% total = 0 %> 
+      <% @carts.each do |cart| %> 
+        <tr>
+          <td>
+            <%= image_tag @item.image, size: "80x80" %>
+            <%= cart.item.name %>
+          </td>
+          <td><%= cart.tax_price.to_i %></td>
+          <td><%= cart.count %></td>
+          <td>
+             <%= subtotal %>#小計を表示
+           </td>
+         </tr>
+         <!--<% total += subtotal%> #アイテムごとに合計金額に加算-->
+     <% end %>
+</table>
+
+<table>
+     <tr>
+       <th>送料</th>
+        <% @order.shipping_cost = 800 %>
+       <td><%= @order.shipping_cost %></td>
+      </tr>
+     <tr>
+       <th>商品合計</th>
+       <td><%= total.to_i %></td>
+      </tr>
+      <tr>
+        <th>請求金額</th>
+        <% @order.pay_price = @order.shipping_cost + total.to_i %>
+        <td><%= @order.pay_price %></td>
+      </tr>
+</table>
