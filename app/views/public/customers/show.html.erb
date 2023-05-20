@@ -1,5 +1,56 @@
+  <!--フラッシュ表示-->
+  <%= flash[:notice] %>
+  <%= flash[:alert] %>
+
 <div class = "container">
- <h1>マイページ</h1>
-<h1>登録情報</h1>
-<span><%= link_to "登録する" edit_customer_path, class: "btn-btn-success" %></span>
+  <h1>マイページ</h1>
+  <div class = "row">
+    <p class = "mr-3" >登録情報</p>
+    <%= link_to "編集", edit_customers_path, class:"btn btn-success" %>
+  </div>
+
+  <div class = "row">
+    <table>
+      <tr>
+        <td>氏名</td>
+        <td>
+          <%= current_customer.last_name %>
+          <%= current_customer.first_name %>
+        </td>
+      </tr>
+      <tr>
+        <td>カナ</td>
+        <td>
+          <%= current_customer.last_name_kana %>
+          <%= current_customer.first_name_kana %>
+        </td>
+      </tr>
+      <tr>
+        <td>郵便番号</td>
+        <td><%= current_customer.post_code %></td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td><%= current_customer.address %></td>
+      </tr>
+      <tr>
+        <td>電話番号</td>
+        <td><%= current_customer.phone_number %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= current_customer.email %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class = "row">
+    <p class = "mr-3" >配送先</p>
+    <%= link_to "一覧を見る", shipping_addresses_path, class:"btn btn-primary" %>
+  </div>
+  <div class = "row">
+    <p class = "mr-3" >注文履歴</p>
+    <%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %>
+  </div>
+
 </div>
