@@ -1,10 +1,13 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-    @shipping_addresses = current_customer.shipping_addresses
+    # @customer = Order.customer.find(params[:id])
+    @shipping_addresses = current_customer.shipping_addresses.all
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.save
   end
 
   def confirm
@@ -29,7 +32,7 @@ class Public::OrdersController < ApplicationController
         @order.ships_name = ship.name
 
         # 新規住所入力であれば
-      elsif params[:order][:address_option] = "2"
+      elsif params[:order][:address_option] == "2"
         @order.ships_post_number = params[:order][:ships_post_number]
         @order.ships_address = params[:order][:ships_address]
         @order.ships_name = params[:order][:ships_name]
@@ -50,4 +53,9 @@ class Public::OrdersController < ApplicationController
   def show
   end
 
+
+ private
+    def order_params
+        params.require(:order).permit(:customer_id, :ships_address, :ships_post_number, :ships_name, :payment, :shipping_cost, :pay_price, :order_status)
+    end
 end

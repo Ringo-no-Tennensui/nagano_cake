@@ -21,17 +21,17 @@
         <%= f.label :order_address, "ご自身の住所" %>
         </br>
       　　　　<!--郵便番号-->
-        <%= @order.ships_post_number %>
+        〒<%= current_customer.post_code %>
              <!--住所-->
-         <%= @order.ships_address %><br>
+         <%= current_customer.address %><br>
               <!--名前-->
-         <%= @order.ships_name%></br>
+         <%= current_customer.customer_name %><br>
 
 
     <%= f.radio_button :address_option, 1 %>
      <%= f.label :order_address, "登録済住所から選択" %>
        <br>
-      <%= f.collection_select :customer_id, @shipping_addresses, :id, :ships_name, %>
+        <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %>
        <br>
         <%= f.radio_button :address_option, 2 %>
        <%= f.label :order_address, "新しいお届け先" %>
