@@ -4,5 +4,7 @@ class OrderDetail < ApplicationRecord
   belongs_to :oreder
   belongs_to :item
 
-
+  def total_price
+    item_price.to_i * quantity.to_i
+  end
 end

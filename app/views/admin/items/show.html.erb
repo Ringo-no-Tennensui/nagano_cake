@@ -19,9 +19,9 @@
         <td><%= @item.item_genre.genre %></td>
       </tr>
       <tr>
-        <!--税率１０％に指定-->
+        <!--税込価格と税抜価格を表示-->
         <td>税込価格<br>(税抜価格)</td>
-        <td><%= (@item.item_price * 1.1).floor.to_s(:delimited, delimiter: ',') %>(<%= @item.item_price.to_s(:delimited, delimiter: ',') %>)円</td>
+        <td><%= @item.tax_price.to_s(:delimited, delimiter: ',') %>(<%= @item.item_price.to_s(:delimited, delimiter: ',') %>)円</td>
       </tr>
       <tr>
         <td>販売ステータス</td>

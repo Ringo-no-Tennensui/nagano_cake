@@ -1,7 +1,7 @@
 <div class="container-md">
-  <h2><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h2>
+  <h2><%= @customer.customer_name %>さんの会員情報編集</h2>
+  <%= form_with model: @customer, url:admin_customer_path, metod: :patch, local: true do |f| %>
   <table class="mt-5 mb-5">
-    <%= form_with model: @customer, url:admin_customer_path, metod: :patch, local: true do |f| %>
     <tr>
       <td>会員ID</td>
       <td><%= @customer.id %></td>
@@ -87,6 +87,6 @@
       <td></td>
       <td><%= f.submit '変更を保存', class: "btn btn-sm btn-success" %></td>
     </tr>
-    <% end %>
-  </table>
+    </table>
+  <% end %>
 </div>

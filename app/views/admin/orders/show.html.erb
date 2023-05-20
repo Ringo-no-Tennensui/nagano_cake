@@ -5,7 +5,7 @@
       <td>購入者</td>
       <td>
         <%= link_to admin_customer_path do%>
-        <%= @order.customer.last_name + @order.customer.first_name %>
+        <%= @order.customer.customer_name %>
         <% end %>
       </td>
     </tr>
@@ -47,9 +47,9 @@
         <%= @order_details.each do |order_detail| %>
         <tr>
           <td><%= order_detail.item.item_name %></td>
-          <td><%= order_detail.item_price %></td>
+          <td><%= order_detail.item.tax_price %></td>
           <td><%= order_detail.quantity %></td>
-          <td><%= order_detail.item_price.to_i * order_detail.quantity.to_i(:delimited, delimiter: ',') %></td>
+          <td><%= order_detail.total_price.(:delimited, delimiter: ',') %></td>
           <td>
           <%= form_with model: order_detail, method: :patch,local: true do |f| %>
           <%= f.select :task_status, options_from_collection_for_select(OrderDetail.all, :task_status) %>
@@ -63,15 +63,15 @@
       <table>
         <tr>
           <td>商品合計</td>
-          <td><%= @order_details.item_price.to_i * @order_details.quantity.to_i(:delimited, delimiter: ',') %>円</td>
+          <td><%= @order_details.total_price.(:delimited, delimiter: ',') %>円</td>
         </tr>
         <tr>
           <td>送料</td>
-          <td>800円</td>
+          <td><%= @order.shipping_cost %>円</td>
         </tr>
         <tr>
           <td>請求金額合計</td>
-          <td><%= @order_details.item_price.to_i * @order_details.quantity.to_i + 800.to_i(:delimited, delimiter: ',') %>円</td>
+          <td><%= @order_details.total_price.to_i + @order.shipping_cost.to_i.(:delimited, delimiter: ',') %>円</td>
         </tr>
       </table>
     </div>
