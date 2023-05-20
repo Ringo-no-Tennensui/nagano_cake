@@ -1,3 +1,5 @@
+  <!--フラッシュ表示-->
+  <%= flash[:notice] %>
 <div class=container>
   <%= form_with model: resource, url: customers_path, id: 'new_public', class: 'new_public' do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>

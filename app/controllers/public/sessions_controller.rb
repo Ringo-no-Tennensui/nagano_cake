@@ -29,7 +29,7 @@ class Public::SessionsController < Devise::SessionsController
         ## 【処理内容3】1と２がtrueならサインアップ画面に遷移する。
     if @customer.valid_password?(params[:customer][:password]) && (@customer.member_status == true)
         flach[:notice] = "退会済のアカウントです。"
-        render new_customer_registration_path
+        redirect_to new_customer_registration_path
     end
   end
 
