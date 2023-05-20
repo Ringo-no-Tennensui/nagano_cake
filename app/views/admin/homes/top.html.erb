@@ -1,4 +1,5 @@
 <div class="container-md">
+  <%= flash[:notice] %>
   <h2>注文履歴一覧</h2>
   <table>
     <tr>
@@ -11,8 +12,8 @@
     <tr>
       <!--購入日時をクリックで注文履歴詳細へ飛ぶ-->
       <td><%= link_to admin_order_path do%><%= order.created_at %><% end %></td>
-      <!--苗字＋名前-->
-      <td><%= order.customer.last_name + order.customer.first_name %></td>
+      <!--customerモデルのcustomer_nameメソッドを使用-->
+      <td><%= order.customer.customer_name %></td>
       <!--注文詳細から注文個数を呼び出し-->
       <td><%= order.order_detail.quantity %></td>
       <!--注文ステータスを日本語に変換-->

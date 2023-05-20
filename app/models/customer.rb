@@ -4,11 +4,11 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum member_status: { exist: false, withdraw: true }
-  
+
   has_many :carts, dependent: :destroy
   has_many :oreders, dependent: :destroy
   has_many :shipping_addresses, dependent: :destroy
-  
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :first_name_kana, presence: true
@@ -18,4 +18,8 @@ class Customer < ApplicationRecord
   validates :phone_number, presence: true,numericality: { only_integer: true }, length: { minimum: 10,maximum: 11}
   validates :email, presence: true
   validates :encrypted_password, presence: true,length: { minimum: 6 }
+
+  def customer_name
+    last_name + first_name
+  end
 end
