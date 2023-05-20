@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     resources :shipping_addresses, only:[:index, :edit, :create, :update, :destroy]
     resources :orders, only:[:new, :index, :show, :create] do
       collection do
-        post 'orders/confirm'
-        get 'orders/thanks'
+        post 'confirm'
+        get 'thanks'
       end
     end
       
@@ -29,8 +29,8 @@ Rails.application.routes.draw do
     get 'customers/mypage' => 'customers#show'
     resource :customers, only:[:edit, :update,] do
     collection do
-      get 'customers/confirm'
-      patch 'customers/withdraw'
+      get 'confirm'
+      patch 'withdraw'
   
       end  
     end
