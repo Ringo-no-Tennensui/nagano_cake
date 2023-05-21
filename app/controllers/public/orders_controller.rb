@@ -13,7 +13,7 @@ class Public::OrdersController < ApplicationController
         order_detail.order_id = @order.id
         order_detail.item_id = cart.item_id
         order_detail.quantity = cart.count
-        order_detail.item_price = cart.item.item_price
+        order_detail.item_price = cart.item.tax_price
         order_detail.save
      end
      current_customer.carts.destroy_all
@@ -60,10 +60,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @total = @order.order_details.inject(0) { |sum, order_detail| sum + order_detail.total_price }
   end
 
 

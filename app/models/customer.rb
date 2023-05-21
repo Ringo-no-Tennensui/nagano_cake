@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
   enum member_status: { exist: false, withdraw: true }
 
   has_many :carts, dependent: :destroy
-  has_many :oreders, dependent: :destroy
+  has_many :orders, dependent: :destroy
   has_many :shipping_addresses, dependent: :destroy
 
   validates :first_name, presence: true
