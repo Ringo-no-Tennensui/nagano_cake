@@ -15,7 +15,14 @@
       <!--customerモデルのcustomer_nameメソッドを使用-->
       <td><%= order.customer.customer_name %></td>
       <!--注文詳細から注文個数を呼び出し-->
-      <td><%= order.order_details.count %></td>
+      <td>
+        <% count = 0 %>
+        <% order.order_details.each do |order_detail| %>
+         <% count += order_detail.quantity %>
+        <% end %>
+        <%= count %>
+        <%#= order.order_details.count %>
+      </td>
       <!--注文ステータスを日本語に変換-->
       <td><%= order.order_status_i18n %></td>
     </tr>
