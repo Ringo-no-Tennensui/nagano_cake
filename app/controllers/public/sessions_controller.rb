@@ -27,8 +27,8 @@ class Public::SessionsController < Devise::SessionsController
     return if !@customer
     ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
         ## 【処理内容3】1と２がtrueならサインアップ画面に遷移する。
-    if @customer.valid_password?(params[:customer][:password]) && (@customer.member_status == true)
-        flach[:notice] = "退会済のアカウントです。"
+    if @customer.valid_password?(params[:customer][:password]) && @customer.member_status == "withdraw"
+        flash[:notice] = "退会済のアカウントです。"
         redirect_to new_customer_registration_path
     end
   end
