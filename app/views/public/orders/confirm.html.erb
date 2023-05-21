@@ -24,7 +24,7 @@
       <% @carts.each do |cart| %>
         <tr>
           <td>
-            <%= image_tag @item.get_image, size: "80x80" %>
+            <%= image_tag cart.item.get_image, size: "80x80" %>
             <%= cart.item.item_name %>
           </td>
           <td><%= cart.item.tax_price.to_i %></td>
@@ -54,3 +54,16 @@
       </tr>
 </table>
 
+        <div class="row justify-content-center py-5">
+            <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+            <%= f.hidden_field :customer_id %>
+            <%= f.hidden_field :ships_address %>
+            <%= f.hidden_field :ships_post_number %>
+            <%= f.hidden_field :ships_name %>
+            <%= f.hidden_field :payment %>
+            <%= f.hidden_field :shipping_cost %>
+            <%= f.hidden_field :pay_price %>
+            <%= f.hidden_field :order_status %>
+            <%= f.submit "注文を確定する", class: "btn btn-success" %>
+        <% end %>
+        </div>
