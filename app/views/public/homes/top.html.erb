@@ -5,7 +5,7 @@
     </div>
     <div class='col-md-10'>
       <div class="card text-white mb-3">
-        <img class="card-img" src="/assets/nagano_cake.png" alt="">
+        <img class="card-img" src="/assets/nagano_cake3.jpg" alt="">
         <div class="card-img-overlay d-flex align-items-center justify-content-center">
         <div class="card intro-box">
           <div class="card-text p-2">
@@ -19,17 +19,17 @@
       </div>
       <h2>新着商品</h2>
       <div class="card-deck">
-        <%# @items.limit(4).each do |item| %>
+        <% @items.limit(4).reverse.each do |item| %>
           <div class="col-md-3 mb-3">
-            <!--<a href="/items/<%#= item.id %>" class="card h-100 m-0">-->
-                <%#= image_tag item.get_image %>
+            <a href="/items/<%= item.id %>" class="card h-100 m-0">
+                <%= image_tag item.get_image %>
               <div class="card-body">
-                <h5 class="card-title"><%#= item.name %></h5>
-                <p class="card-text">¥<%#= item.price.to_s(:delimited, delimiter: ',') %></p>
+                <h5 class="card-title"><%= item.item_name %></h5>
+                <p class="card-text">¥<%= item.item_price.to_s(:delimited, delimiter: ',') %></p>
               </div>
-            <!--</a>-->
+            </a>
           </div>
-        <%# end %>
+        <% end %>
       </div>
       <p class="text-right">
         <%= link_to "すべての商品を見る>", items_path %>
