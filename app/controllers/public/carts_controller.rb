@@ -6,25 +6,23 @@ class Public::CartsController < ApplicationController
   end
 
   def create
-
-  @cart = Cart.new(cart_params)
-  if current_customer.carts.find_by(item_id: @cart.item_id)
-     cart = current_customer.carts.find_by(item_id: @cart.item_id)
-     cart.count += @cart.count.to_i
-     cart.save
-   redirect_to carts_path
-  else
-   @cart.save
-   redirect_to carts_path
+    @cart = Cart.new(cart_params)
+    if current_customer.carts.find_by(item_id: @cart.item_id)
+      cart = current_customer.carts.find_by(item_id: @cart.item_id)
+      cart.count += @cart.count.to_i
+      cart.save
+      redirect_to carts_path
+    else
+      @cart.save
+      redirect_to carts_path
+    end
   end
- end
 
 
   def update
     @cart= Cart.find(params[:id])
     @cart.update(cart_params)
     redirect_to carts_path
-
   end
 
 
