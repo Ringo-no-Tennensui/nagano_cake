@@ -15,7 +15,6 @@ class Public::OrdersController < ApplicationController
         order_detail.quantity = cart.count
         order_detail.item_price = cart.item.item_price
         order_detail.save
-
      end
      current_customer.carts.destroy_all
      redirect_to thanks_orders_path
@@ -61,6 +60,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.all
   end
 
   def show

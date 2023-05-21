@@ -7,5 +7,8 @@ class Order < ApplicationRecord
 
   validates :shipping_cost, presence: true
 
+  def address_display
+    '〒' + ships_post_number + ' ' + ships_address + ' ' + ships_name
+  end
 
 end
