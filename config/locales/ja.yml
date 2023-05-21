@@ -14,7 +14,7 @@ ja:
         task_status:
           impossible: "着手不可"
           stay: "制作待ち"
-          maiking: "制作中"
+          making: "制作中"
           complete: "制作完了"
       customer:
         member_status:

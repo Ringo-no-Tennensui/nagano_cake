@@ -4,7 +4,7 @@
     <div>
     <h3>支払方法</h3><br>
 
-    <%= form_with model: @order, url:orders_path, method: :post, local: true do |f| %>
+    <%= form_with model: @order, url: confirm_orders_path, method: :post, local: true do |f| %>
       <span>
         <%= f.radio_button :payment, Order.payments.key(1), checked: true %>
         <%= f.label :payment_bank, Order.payments_i18n[:bank] %>
@@ -49,9 +49,11 @@
             <td class='col-9'><%= f.text_field :ships_name, :placeholder => "令和道子" %></td>
         </tr>
     </table>
-        <div class="row justify-content-center py-5">
-            <%= f.submit "確認画面へ進む" , class: "btn btn-primary" %>
+   
+   
+            <%= f.submit "注文を確定する", class: "btn btn-success" %>
         </div>
     <% end %>
   </div>
+
 </div>

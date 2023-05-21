@@ -4,14 +4,14 @@
     <tr>
       <td>購入者</td>
       <td>
-        <%= link_to admin_customer_path do%>
+        <%= link_to admin_customer_path do %>
         <%= @order.customer.customer_name %>
         <% end %>
       </td>
     </tr>
     <tr>
       <td>注文日</td>
-      <td><%= @order.created_at.strftime(%y%m%d) %></td>
+      <td><%= @order.created_at.strftime("%Y%m%d") %></td>
     </tr>
     <tr>
       <td>配送先</td>
@@ -26,7 +26,7 @@
       <td>注文ステータス</td>
       <%= form_with model: @order, method: :patch,local: true do |f| %>
       <td>
-      <%= f.select :order_status, options_from_collection_for_select(Order.all, :order_status) %>
+      <%= f.select :order_status, Order.order_statuses_i18n.invert,{class: "form-control"} %>
       </td>
       <td>
       <%= f.submit "更新", class: "btn btn-success" %>
@@ -44,26 +44,30 @@
           <td>小計</td>
           <td>製作ステータス</td>
         </tr>
-        <%= @order_details.each do |order_detail| %>
+        <% @order_details.each do |order_detail| %>
         <tr>
           <td><%= order_detail.item.item_name %></td>
           <td><%= order_detail.item.tax_price %></td>
           <td><%= order_detail.quantity %></td>
-          <td><%= order_detail.total_price.(:delimited, delimiter: ',') %></td>
+          <td><%= order_detail.total_price.to_s(:delimited) %></td>
           <td>
-          <%= form_with model: order_detail, method: :patch,local: true do |f| %>
-          <%= f.select :task_status, options_from_collection_for_select(OrderDetail.all, :task_status) %>
+          <%= form_with model: order_detail, url: admin_order_detail_path(@order_details), method: :patch, local: true do |f| %>
+
+          <%= f.select :task_status, OrderDetail.task_statuses_i18n.invert,{class: "form-control"} %>
           <%= f.submit "更新", class: "btn btn-success" %>
+
           <% end %>
           </td>
         </tr>
+        <% end %>
       </table>
+
     </div>
     <div class="col col-lg-3">
       <table>
         <tr>
           <td>商品合計</td>
-          <td><%= @order_details.total_price.(:delimited, delimiter: ',') %>円</td>
+          <td><%#= total.to_i.(:delimited, delimiter: ',') %>円</td>
         </tr>
         <tr>
           <td>送料</td>
@@ -71,8 +75,9 @@
         </tr>
         <tr>
           <td>請求金額合計</td>
-          <td><%= @order_details.total_price.to_i + @order.shipping_cost.to_i.(:delimited, delimiter: ',') %>円</td>
+          <td><%#= @order_details.total_price.to_i + @order.shipping_cost.to_i.(:delimited, delimiter: ',') %>円</td>
         </tr>
+
       </table>
     </div>
   </div>
