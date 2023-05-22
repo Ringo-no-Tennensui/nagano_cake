@@ -1,13 +1,12 @@
 class Public::OrdersController < ApplicationController
   def new
     @carts = current_customer.carts
-    
     if @carts.any?
       @order = Order.new
       @shipping_addresses = current_customer.shipping_addresses.all
-    end
-    
+    else
     redirect_to carts_path #今現在のページ
+    end
   end
 
   def create
