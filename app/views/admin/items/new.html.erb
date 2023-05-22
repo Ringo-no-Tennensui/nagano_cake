@@ -10,7 +10,7 @@
         <td><h4>商品画像</h4></td>
         <td>
           <% f.label :Item_Image %>
-          <%= f.file_field :image, accept: "image/*" %>
+          <%= f.file_field :image, accept: "image/*", required: true %>
         </td>
       </div>
     </tr>
@@ -19,7 +19,7 @@
       <div class="form-group">
         <td><h4>商品名</h4></td>
         <td>
-          <%= f.text_field :item_name, placeholder: "商品名", class: "form-control" %>
+          <%= f.text_field :item_name, placeholder: "商品名", class: "form-control", required: true %>
         </td>
       </div>
     </tr>
@@ -28,7 +28,7 @@
       <div class="form-group">
         <td><h4>商品説明</h4></td>
         <td>
-          <%= f.text_area :item_explanation, placeholder: "ここに説明文を記述します", class: "form-control", rows: "5" %>
+          <%= f.text_area :item_explanation, placeholder: "ここに説明文を記述します", class: "form-control", rows: "5", required: true %>
         </td>
       </div>
     </tr>
@@ -37,7 +37,7 @@
       <div class="form-group">
         <td><h4>ジャンル</h4></td>
         <td>
-          <%= f.select :item_genre_id, options_from_collection_for_select(ItemGenre.all, :id, :genre),{prompt: "--選択してください--"} %>
+          <%= f.select :item_genre_id, options_from_collection_for_select(ItemGenre.all, :id, :genre),{ :include_blank => '--選択してください--' }, :required => true  %>
         </td>
       </div>
     </tr>
@@ -46,7 +46,7 @@
       <div class="form-group">
       <td><h4>税抜価格</h4></td>
       <td>
-        <%= f.text_field :item_price, placeholder: "1000", class: "form-control" %>
+        <%= f.text_field :item_price, placeholder: "1000", class: "form-control", required: true %>
       </td>
       <td>円</td>
       </div>

@@ -28,7 +28,7 @@
     <div>
       <%= f.radio_button :address_option, 1 %>
       <%= f.label :order_address, "登録済住所から選択" %><br>
-      <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %><br>
+      <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display),required: true %><br>
     </div>
     <!--新しいお届け先の登録-->
     <div>
@@ -37,15 +37,15 @@
       <table>
         <tr>
           <td class='col-3'><%= f.label :ships_post_number, "郵便番号(ハイフンなし)" %></td>
-          <td class='col-9'><%= f.text_field :ships_post_number, :placeholder => "0000000"%></td>
+          <td class='col-9'><%= f.text_field :ships_post_number, :placeholder => "0000000", required: true %></td>
         </tr>
         <tr>
           <td class='col-3'><%= f.label :ships_address, "住所" %></td>
-          <td class='col-9'><%= f.text_field :ships_address, :placeholder => "東京都渋谷区代々木神園町0-0", class: "w-100" %></td>
+          <td class='col-9'><%= f.text_field :ships_address, :placeholder => "東京都渋谷区代々木神園町0-0", class: "w-100", required: true %></td>
         </tr>
         <tr>
           <td class='col-3'><%= f.label :ships_name, "宛名" %></td>
-          <td class='col-9'><%= f.text_field :ships_name, :placeholder => "令和道子" %></td>
+          <td class='col-9'><%= f.text_field :ships_name, :placeholder => "令和道子", required: true %></td>
         </tr>
       </table>
     </div>

@@ -22,7 +22,7 @@
         <% @items.limit(4).reverse.each do |item| %>
           <div class="col-md-3 mb-3">
             <a href="/items/<%= item.id %>" class="card h-100 m-0">
-                <%= image_tag item.get_image %>
+                <%= image_tag item.get_image(200,200) %>
               <div class="card-body">
                 <h5 class="card-title"><%= item.item_name %></h5>
                 <p class="card-text">¥<%= item.tax_price.to_s(:delimited, delimiter: ',') %></p>

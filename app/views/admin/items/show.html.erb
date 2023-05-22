@@ -2,7 +2,7 @@
   <h2>商品詳細</h2>
   <div class="row">
     <div class="col-md-3">
-    <%= image_tag @item.image, size: "200x200" %>
+    <%= image_tag @item.get_image(200,200) %>
     </div>
     <div class="col-xs-2 col-md-8">
     <table>
@@ -21,7 +21,7 @@
       <tr>
         <!--税込価格と税抜価格を表示-->
         <td>税込価格<br>(税抜価格)</td>
-        <td><%= @item.tax_price.to_s(:delimited, delimiter: ',') %>(<%= @item.item_price.to_s(:delimited, delimiter: ',') %>)円</td>
+        <td><%= @item.tax_price.to_s(:delimited) %>(<%= @item.item_price.to_s(:delimited) %>)円</td>
       </tr>
       <tr>
         <td>販売ステータス</td>
