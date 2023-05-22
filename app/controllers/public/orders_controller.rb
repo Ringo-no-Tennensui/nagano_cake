@@ -1,8 +1,13 @@
 class Public::OrdersController < ApplicationController
   def new
-    @order = Order.new
-    # @customer = Order.customer.find(params[:id])
-    @shipping_addresses = current_customer.shipping_addresses.all
+    @carts = current_customer.carts
+    
+    if @carts.any?
+      @order = Order.new
+      @shipping_addresses = current_customer.shipping_addresses.all
+    end
+    
+    redirect_to carts_path #今現在のページ
   end
 
   def create
@@ -38,10 +43,10 @@ class Public::OrdersController < ApplicationController
 
         # collection.selectであれば
       elsif params[:order][:address_option] == "1"
-        ship = ShippingAddress.find(params[:order][:customer_id])
-        @order.ships_post_number = ship.post_number
-        @order.ships_address = ship.address
-        @order.ships_name = ship.name
+        ship = ShippingAddress.find_by(params[:order][:customer_id])
+        @order.ships_post_number = ship.ships_post_number
+        @order.ships_address = ship.ships_address
+        @order.ships_name = ship.ships_name
 
         # 新規住所入力であれば
       elsif params[:order][:address_option] == "2"
