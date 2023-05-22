@@ -70,6 +70,3 @@ particlesJS("particles-js", {
 });
 
 
-
-
-

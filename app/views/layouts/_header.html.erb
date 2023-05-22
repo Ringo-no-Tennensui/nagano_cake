@@ -1,15 +1,19 @@
-<nav class="navbar navbar-expand-lg", style="background-color: #000000;">
-  <div class="container-md">
     <div class="mx-3">
+      <div class = "header-inner mt-3">
       <!--ロゴ-->
         <% if admin_signed_in? %>
         <%= link_to image_tag("nagano_cake_logo.png"),admin_root_path, width: '50%', height: '50%' %>
         <% else %>
         <%= link_to image_tag("nagano_cake_logo.png"),root_path, width: '50%', height: '50%' %>
         <% end %>
+      </div>
     </div>
-    <h1 class="text-center mt-3" style="font-family: 'IM Fell DW Pica SC', serif;"><font color ="#54240c">Nagano Cake</font></h1>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+
+    <nav class="navbar navbar-expand-lg", style="background-color: #00000050;">
+      <h1 class="title mt-3" style="font-family: 'IM Fell DW Pica SC', serif;"><font color ="#54240c">Nagano Cake</font></h1>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
       <ul class="navbar-nav ml-auto">
 
         <!--管理者がログインしていたら-->
@@ -110,6 +114,6 @@
         <% end %>
 
       </ul>
+
     </div>
-  </div>
-</nav>
+  </nav>
