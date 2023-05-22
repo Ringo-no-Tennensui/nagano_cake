@@ -1,11 +1,15 @@
-<div style = "border: solid">
-  <div style ="border-bottom: solid">
-    <p>ジャンル検索</p>
-    </div>
 
-    <% genres.each do |genre| %>
-    <%= genre.genre %><br>
-    <% end %>
+
+<div class ="mt-5">
+  <div style = "border: solid #fff;">
+    <div style ="border-bottom: solid #fff;">
+      <p style ="color: #fff;">ジャンル検索</p>
+      </div>
+    
+      <% genres.each do |genre| %>
+      <p style = "text-align:center; color: #fff;"><%= genre.genre %></p><br>
+      <% end %>
 
   </div>
+</div>
 

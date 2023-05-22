@@ -23,7 +23,7 @@
    <% @carts.each do |cart| %>
    <tr>
     <td>
-       <%= image_tag cart.item.get_image(80,50) %>
+       <%= image_tag cart.item.get_image(100,70), class: "cart-item-image", style: "margin: auto;" %>
        <%= cart.item.item_name %>
     </td>
     <td><%= cart.item.tax_price.to_s(:delimited) %></td>
@@ -37,7 +37,7 @@
      </td>
 
      <td>
-      <%= cart.subtotal.to_s(:delimited) %>
+      <%= cart.subtotal.to_s(:delimited, delimiter: ',') %>
      </td>
 
      <td>
@@ -51,7 +51,7 @@
     <tr>
      <td width = "70%"><%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %></td>
      <td width = "13%">合計金額</td>
-     <td><%= @total.to_s(:delimited) %></td>
+     <td><%= @total.to_s(:delimited, delimiter: ',') %></td>
     </tr>
    </table>
 

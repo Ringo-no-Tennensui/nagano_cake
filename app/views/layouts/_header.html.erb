@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg", style="background-color: #4c1c09;">
+<nav class="navbar navbar-expand-lg", style="background-color: #000000;">
   <div class="container-md">
     <div class="mx-3">
       <!--ロゴ-->
@@ -8,7 +8,7 @@
         <%= link_to image_tag("nagano_cake_logo.png"),root_path, width: '50%', height: '50%' %>
         <% end %>
     </div>
-    <h1 class="text-center mt-3" style="font-family: 'IM Fell DW Pica SC', serif;">Nagano Cake</h1>
+    <h1 class="text-center mt-3" style="font-family: 'IM Fell DW Pica SC', serif;"><font color ="#54240c">Nagano Cake</font></h1>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
 
@@ -49,9 +49,9 @@
         <!--顧客がログインしていたら-->
         <% elsif customer_signed_in? %>
 
-          <p class="mr-5 pr-5">
+          <h6 class="pt-3 mr-5 pr-5 text-light">
             ようこそ <%= current_customer.last_name %> さん!
-          </p>
+          </h6>
 
 
 
@@ -84,25 +84,25 @@
 
 
           <li>
-            <%= link_to about_path, class: "nav-link text-dark" do %>
+            <%= link_to about_path, class: "nav-link text-light" do %>
               about
             <% end %>
           </li>
 
           <li>
-            <%= link_to items_path, class: "nav-link text-dark" do %>
+            <%= link_to items_path, class: "nav-link text-light" do %>
               商品一覧
             <% end %>
           </li>
 
           <li>
-            <%= link_to new_customer_registration_path, class: "nav-link text-dark" do %>
+            <%= link_to new_customer_registration_path, class: "nav-link text-light" do %>
               新規登録
             <% end %>
           </li>
 
           <li>
-            <%= link_to new_customer_session_path, class: "nav-link text-dark" do %>
+            <%= link_to new_customer_session_path, class: "nav-link text-light" do %>
               ログイン
             <% end %>
           </li>

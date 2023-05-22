@@ -5,13 +5,17 @@
    <%= render 'public/homes/genre', genres: @genres %>
   </div>
   <!--商品詳細画面-->
-  <div class='col-md-10'>
-   <%= image_tag @item.get_image(300,300) %>
+  <div class='col-md-5 mt-5'>
+   <%= image_tag @item.get_image(300,210), class: "show-item-image", style: "margin: auto;" %>
+    </div>
+    
+    <div class= "col-md-4 mt-5">
     <%= @item.item_name %></br>
 
-    <%= @item.item_explanation %></br>
-
-    <p>¥<%= @item.tax_price.to_s(:delimited, delimiter: ',') %>（税込）</p>
+    <%= @item.item_explanation %>
+     <p>
+    ¥<%= @item.tax_price.to_s(:delimited)%>（税込)
+     </p>
 
     <% if customer_signed_in? %>
 
@@ -20,10 +24,12 @@
       <%= f.hidden_field :customer_id, :value => current_customer.id %>
 
       <%= f.hidden_field :item_id, :value => @item.id %>
-
+      <p style>
       <%= f.submit "カートに入れる"%>
-
       <%= f.select :count, *[1..10] %>
+      </p>
+
+      
 
     <% end %>
 
