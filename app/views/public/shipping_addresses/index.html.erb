@@ -3,8 +3,9 @@
   <%= flash[:alert] %>
 <h2>配送先登録/一覧</h2>
 
+
+<%= form_with model: @shipping_address do |f| %>
   <table>
-  <%= form_with model: @shipping_address do |f| %>
   <%= f.hidden_field :customer_id, :value => current_customer.id %>
   <tr>
     <td><%= f.label :"郵便番号（ハイフンなし）" %></td>
@@ -21,8 +22,8 @@
     <td><%= f.text_field :ships_name, placeholder: "令和道子" %></td>
     <td><%= f.submit "新規登録", class:"btn-success" %></td>
   </tr>
-  <% end %>
   </table>
+<% end %>
 
   <table class = "table">
     <tr>
