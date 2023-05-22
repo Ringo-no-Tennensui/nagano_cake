@@ -23,10 +23,10 @@
    <% @carts.each do |cart| %>
    <tr>
     <td>
-       <%= image_tag cart.item.get_image, size: '80x50' %>
+       <%= image_tag cart.item.get_image(80,50) %>
        <%= cart.item.item_name %>
     </td>
-    <td><%= cart.item.tax_price.to_s(:delimited, delimiter: ',') %></td>
+    <td><%= cart.item.tax_price.to_s(:delimited) %></td>
     <td width = "11%">
      <%= form_with model: cart do |f| %>
       <%= f.hidden_field :customer_id, :value => current_customer.id %>
@@ -37,7 +37,7 @@
      </td>
 
      <td>
-      <%= cart.subtotal.to_s(:delimited, delimiter: ',') %>
+      <%= cart.subtotal.to_s(:delimited) %>
      </td>
 
      <td>
@@ -51,7 +51,7 @@
     <tr>
      <td width = "70%"><%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %></td>
      <td width = "13%">合計金額</td>
-     <td><%= @total.to_s(:delimited, delimiter: ',') %></td>
+     <td><%= @total.to_s(:delimited) %></td>
     </tr>
    </table>
 

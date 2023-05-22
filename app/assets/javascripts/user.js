@@ -1,7 +1,7 @@
 particlesJS("particles-js", {
   "particles":{
     "number":{
-      "value":346,//この数値を変更すると星の数が増減できる
+      "value":500,
       "density":{
         "enable":true,
         "value_area":800
@@ -11,19 +11,19 @@ particlesJS("particles-js", {
       "value":"#ffffff"
     },
     "shape":{
-      "type":"circle",//形状はcircleを指定
+      "type":"circle",
       "stroke":{
         "width":0
       },
       },
     "opacity":{
-      "value":1,//シェイプの透明度
-      "random":true,//シェイプの透明度をランダムにする
+      "value":1,
+      "random":true,
       "anim":{
-        "enable":true,//シェイプの透明度をアニメーションさせる
-        "speed":3,//シェイプの透明度をアニメーションさせる
-        "opacity_min":0,//透明度の最小値０
-        "sync":false//全てを同時にアニメーションさせない
+        "enable":true,
+        "speed":3,
+        "opacity_min":0,
+        "sync":false
       }
     },
     "size":{
@@ -41,10 +41,10 @@ particlesJS("particles-js", {
     },
     "move":{
       "enable":true,
-      "speed":120,//この数値を小さくするとゆっくりな動きになる
-    "direction":"none",//方向指定なし
-    "random":true,//動きはランダムに
-    "straight":true,//動きをとどめる
+      "speed":120,
+    "direction":"none",
+    "random":true,
+    "straight":true,
       "out_mode":"out",
       "bounce":false,
       "attract":{

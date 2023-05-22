@@ -6,7 +6,7 @@
   </div>
   <!--商品詳細画面-->
   <div class='col-md-10'>
-   <%= image_tag @item.get_image, size: '200x100' %>
+   <%= image_tag @item.get_image(300,300) %>
     <%= @item.item_name %></br>
 
     <%= @item.item_explanation %></br>
