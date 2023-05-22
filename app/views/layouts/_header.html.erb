@@ -11,7 +11,7 @@
 
 
     <nav class="navbar navbar-expand-lg", style="background-color: #00000050;">
-      <h1 class="title mt-3" style="font-family: 'IM Fell DW Pica SC', serif;"><font color ="#54240c">Nagano Cake</font></h1>
+      <h1 class="title mt-3" style="font-family: 'IM Fell DW Pica SC', serif;"><font class ="nagano">Nagano Cake</font></h1>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
       <ul class="navbar-nav ml-auto">
@@ -60,25 +60,25 @@
 
 
           <li>
-            <%= link_to customers_mypage_path, class: "nav-link text-light" do %>
+            <%= link_to customers_mypage_path, class: "nav-link menu" do %>
               マイページ
             <% end %>
           </li>
 
           <li>
-            <%= link_to items_path, class: "nav-link text-light" do %>
+            <%= link_to items_path, class: "nav-link menu" do %>
               商品一覧
             <% end %>
           </li>
 
           <li>
-            <%= link_to carts_path, class: "nav-link text-light" do %>
+            <%= link_to carts_path, class: "nav-link menu" do %>
               カート
             <% end %>
           </li>
 
           <li>
-            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
+            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link menu" do %>
               ログアウト
             <% end %>
           </li>
