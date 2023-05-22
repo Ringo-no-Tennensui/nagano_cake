@@ -25,7 +25,7 @@
                 <%= image_tag item.get_image %>
               <div class="card-body">
                 <h5 class="card-title"><%= item.item_name %></h5>
-                <p class="card-text">¥<%= item.item_price.to_s(:delimited, delimiter: ',') %></p>
+                <p class="card-text">¥<%= item.tax_price.to_s(:delimited, delimiter: ',') %></p>
               </div>
             </a>
           </div>

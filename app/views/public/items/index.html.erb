@@ -11,15 +11,18 @@
       </div>
 
       <div class ="item-box">
+        <div class = "row">
         <% @items.limit(8).each do |item| %>
-        <div class = "col-md3">
+        
+          <div class ="col-md-3">
           <a href="/items/<%= item.id %>">
-            <%= image_tag item.get_image, size: '200x200' %><br>
+            <%= image_tag item.get_image, size: '200x100' %><br>
             <%= item.item_name %>
-            <p>¥<%= item.tax_price.to_s(:delimited, delimiter: ',') %></p></p>
+            <p>¥<%= item.tax_price.to_s(:delimited, delimiter: ',') %></p>
           </a>
-        </div>
+          </div>
        <% end %>
+       </div>
       </div>
     </div>
 
