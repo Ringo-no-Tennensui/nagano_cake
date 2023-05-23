@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg", style="background-color: #00000050;">
-  <h1 class="title mt-3" style="font-family: 'IM Fell DW Pica SC', serif;"><font class ="nagano">Nagano Cake</font></h1>
+<nav class="navbar navbar-expand-lg", style="background-color: #001A43;">
+  <h1 class="title mt-3" style="font-family: 'IM Fell DW Pica SC', serif;"><font class ="gold">Nagano Cake</font></h1>
   <div class="navbar-collapse" >
       <!--ロゴ-->
     <div class = "header_inner">
@@ -13,27 +13,27 @@
       <!--管理者がログインしていたら-->
       <% if admin_signed_in? %>
       <li>
-        <%= link_to admin_items_path, class: "nav-link menu" do %>
+        <%= link_to admin_items_path, class: "nav-link gold" do %>
           商品一覧
         <% end %>
       </li>
       <li>
-        <%= link_to admin_customers_path, class: "nav-link menu" do %>
+        <%= link_to admin_customers_path, class: "nav-link gold" do %>
           会員一覧
         <% end %>
       </li>
       <li>
-        <%= link_to admin_root_path, class: "nav-link menu" do %>
+        <%= link_to admin_root_path, class: "nav-link gold" do %>
           注文履歴一覧
         <% end %>
       </li>
       <li>
-        <%= link_to admin_genres_path, class: "nav-link menu" do %>
+        <%= link_to admin_genres_path, class: "nav-link gold" do %>
           ジャンル一覧
         <% end %>
       </li>
        <li>
-        <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link menu" do %>
+        <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link gold" do %>
           ログアウト
         <% end %>
       </li>
@@ -43,44 +43,44 @@
           ようこそ <%= current_customer.last_name %> さん!
         </h4>
         <li>
-          <%= link_to customers_mypage_path, class: "nav-link menu" do %>
+          <%= link_to customers_mypage_path, class: "nav-link gold" do %>
             マイページ
           <% end %>
         </li>
         <li>
-          <%= link_to items_path, class: "nav-link menu" do %>
+          <%= link_to items_path, class: "nav-link gold" do %>
             商品一覧
           <% end %>
         </li>
         <li>
-          <%= link_to carts_path, class: "nav-link menu" do %>
+          <%= link_to carts_path, class: "nav-link gold" do %>
             カート
           <% end %>
         </li>
         <li>
-          <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link menu" do %>
+          <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link gold" do %>
             ログアウト
           <% end %>
         </li>
       <!--ログイン前画面-->
       <% else %>
         <li>
-          <%= link_to about_path, class: "nav-link menu" do %>
+          <%= link_to about_path, class: "nav-link gold" do %>
             about
           <% end %>
         </li>
         <li>
-          <%= link_to items_path, class: "nav-link menu" do %>
+          <%= link_to items_path, class: "nav-link gold" do %>
             商品一覧
           <% end %>
         </li>
         <li>
-          <%= link_to new_customer_registration_path, class: "nav-link menu" do %>
+          <%= link_to new_customer_registration_path, class: "nav-link gold" do %>
             新規登録
           <% end %>
         </li>
         <li>
-          <%= link_to new_customer_session_path, class: "nav-link menu" do %>
+          <%= link_to new_customer_session_path, class: "nav-link gold" do %>
             ログイン
           <% end %>
         </li>
