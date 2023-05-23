@@ -35,14 +35,14 @@
 
 .header_inner {
 position: absolute;
-top: 20px;
+top: 15px;
 margin-left: 5%;
 }
 
 .navbar{
 width: 100%;
 height: 85px;
-margin-bottom: 60px;
+margin-bottom: 80px;
 }
 
 .title{
@@ -66,6 +66,27 @@ margin-bottom: 60px;
 
 .menu{
   text-color: #DA8E00;
+  background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03, #DA8E00, #EDAC06, #F7DE05, #ECB802, #EDAC06);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.genre-line{
+  text-align: center;
+  color: #6d3c14;
+}
+
+.genre-border{
+  border: solid 1px;
+  color: #DA8E00;
+  background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03, #DA8E00, #EDAC06, #F7DE05, #ECB802, #EDAC06);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.genre-border-1{
+  border-bottom: solid 1px;
+  color: #DA8E00;
   background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03, #DA8E00, #EDAC06, #F7DE05, #ECB802, #EDAC06);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
