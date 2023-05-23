@@ -1,6 +1,7 @@
 <div class="container">
   <h2>注文履歴詳細</h2>
   <%= flash[:notice] %>
+  <%= flash[:alert] %>
   <table>
     <tr>
       <td>購入者</td>
@@ -45,14 +46,14 @@
           <td>小計</td>
           <td>製作ステータス</td>
         </tr>
-        <% @order_details.each do |order_detail| %>
+        <% @order.order_details.each do |order_detail| %>
         <tr>
           <td><%= order_detail.item.item_name %></td>
           <td><%= order_detail.item.tax_price %></td>
           <td><%= order_detail.quantity %></td>
           <td><%= order_detail.total_price.to_s(:delimited) %></td>
           <td>
-          <%= form_with model: order_detail, url: admin_order_detail_path(@order_details), method: :patch, local: true do |f| %>
+          <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch, local: true do |f| %>
 
           <%= f.select :task_status, OrderDetail.task_statuses_i18n.invert,{class: "form-control"} %>
           <%= f.submit "更新", class: "btn btn-success" %>
@@ -68,7 +69,7 @@
       <table>
         <tr>
           <td>商品合計</td>
-          <td><%#= total.to_i.(:delimited, delimiter: ',') %>円</td>
+          <td><%= @total.to_s(:delimited) %>円</td>
         </tr>
         <tr>
           <td>送料</td>
@@ -76,7 +77,7 @@
         </tr>
         <tr>
           <td>請求金額合計</td>
-          <td><%#= @order_details.total_price.to_i + @order.shipping_cost.to_i.(:delimited, delimiter: ',') %>円</td>
+          <td><%= @order.pay_price.to_s(:delimited) %>円</td>
         </tr>
 
       </table>
