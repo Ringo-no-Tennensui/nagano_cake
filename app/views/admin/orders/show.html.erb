@@ -1,6 +1,7 @@
 <div class="container">
   <h2>注文履歴詳細</h2>
   <%= flash[:notice] %>
+  <%= flash[:alert] %>
   <table>
     <tr>
       <td>購入者</td>
@@ -52,7 +53,7 @@
           <td><%= order_detail.quantity %></td>
           <td><%= order_detail.total_price.to_s(:delimited) %></td>
           <td>
-          <%= form_with model: order_detail, url: admin_order_detail_path(@order_details), method: :patch, local: true do |f| %>
+          <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch, local: true do |f| %>
 
           <%= f.select :task_status, OrderDetail.task_statuses_i18n.invert,{class: "form-control"} %>
           <%= f.submit "更新", class: "btn btn-success" %>

@@ -4,14 +4,19 @@ class Admin::OrderDetailsController < ApplicationController
   puts params[:id]
   @order_detail = OrderDetail.find(params[:id])
   @order = @order_detail.order
-  @order_detail.update(order_detail_params)
-
-    if @order_detail.task_status == "making"
-      @order.update(order_status: 2)
-    elsif @order.order_detail.quantity == @order.order_detail.where(order_status: "complete").count
-      @order.update(order_status: 3)
-    end
-  redirect_to adimin_order_path(@order)
+  if @order_detail.update(order_detail_params)
+  flash[:notice] = "制作ステータスを変更しました"
+    # if @order_detail.task_status == "making"
+    #   @order.update(order_status: 2)
+    # elsif @order.order_details.count == @order.order_detail.where(order_status: "complete").count
+    #   @order.update(order_status: 3)
+    # end
+  else
+    flash[:alert] = "ジャンル名を入力してください"
+    redirect_to admin_order_path(@order)
+  end
+  
+  redirect_to admin_order_path(@order)
   end
 
   # def update
