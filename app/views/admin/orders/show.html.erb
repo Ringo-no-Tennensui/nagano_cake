@@ -1,5 +1,6 @@
 <div class="container">
   <h2>注文履歴詳細</h2>
+  <%= flash[:notice] %>
   <table>
     <tr>
       <td>購入者</td>
@@ -24,9 +25,9 @@
     </tr>
     <tr>
       <td>注文ステータス</td>
-      <%= form_with model: @order, method: :patch,local: true do |f| %>
+      <%= form_with model: @order, url: admin_order_path, method: :patch,local: true do |f| %>
       <td>
-      <%= f.select :order_status, Order.order_statuses_i18n.invert,{class: "form-control"} %>
+      <%= f.select :order_status, Order.order_statuses_i18n.invert, class: "form-control" %>
       </td>
       <td>
       <%= f.submit "更新", class: "btn btn-success" %>
