@@ -6,15 +6,15 @@
     </div>
     <!--商品一覧画面-->
     <div class ="col-md-10">
-      <div class ="title">
-        <p>商品一覧(全<%= @items.count %>件</p>
+      <div class ="row ml-2">
+        <p>商品一覧(全<%= @item.count %>件)</p>
       </div>
 
       <div class ="item-box">
         <div class = "row">
         <% @items.limit(8).each do |item| %>
 
-          <div class ="col-md-3">
+          <div class ="gold col-md-3">
           <a href="/items/<%= item.id %>">
             <%= image_tag item.get_image(200,200), class: "item-image"%><br>
             <%= item.item_name %>

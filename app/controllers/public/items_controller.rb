@@ -3,6 +3,7 @@ class Public::ItemsController < ApplicationController
   def index
     #@item = Item.find(params[:id])
     @items = Item.page(params[:page]).per(8)
+    @item = Item.all
     @genres = ItemGenre.all
   end
 
