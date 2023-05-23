@@ -1,18 +1,17 @@
-    <div class="mx-3">
-      <div class = "header-inner mt-3">
-      <!--ロゴ-->
+
+    <nav class="navbar navbar-expand-lg", style="background-color: #00000050;">
+      <h1 class="title mt-3" style="font-family: 'IM Fell DW Pica SC', serif;"><font class ="nagano">Nagano Cake</font></h1>
+      <div class="navbar-collapse" >
+        <!--ロゴ-->
+      <div class = "header_inner">
         <% if admin_signed_in? %>
         <%= link_to image_tag("nagano_cake_logo.png"),admin_root_path, width: '50%', height: '50%' %>
         <% else %>
         <%= link_to image_tag("nagano_cake_logo.png"),root_path, width: '50%', height: '50%' %>
         <% end %>
       </div>
-    </div>
 
 
-    <nav class="navbar navbar-expand-lg", style="background-color: #00000050;">
-      <h1 class="title mt-3" style="font-family: 'IM Fell DW Pica SC', serif;"><font class ="nagano">Nagano Cake</font></h1>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
       <ul class="navbar-nav ml-auto">
 
