@@ -16,9 +16,9 @@
 
           <div class ="col-md-3">
           <a href="/items/<%= item.id %>">
-            <%= image_tag item.get_image(200,200) %><br>
+            <%= image_tag item.get_image(200,200), class: "item-image"%><br>
             <%= item.item_name %>
-            <p>¥<%= item.tax_price.to_s(:delimited, delimiter: ',') %></p>
+            <p>¥<%= item.tax_price.to_s(:delimited) %></p>
           </a>
           </div>
        <% end %>

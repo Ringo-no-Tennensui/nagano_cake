@@ -7,14 +7,14 @@
       <div class="card text-white mb-3">
         <img class="card-img" src="/assets/nagano_cake3.jpg" alt="">
         <div class="card-img-overlay d-flex align-items-center justify-content-center">
-        <div class="card intro-box">
-          <div class="card-text p-2">
+        <div class="top-message">
+          <h3 class= "stroke">
             ようこそ、ながのCAKEへ！<br>
             このサイトは、ケーキ販売のECサイトになります。<br>
             会員でない方も商品の閲覧はできますが、<br>
             購入には会員登録が必要になります。
-          </div>
-        </div>
+          </h3>
+         </div>
         </div>
       </div>
       <h2>新着商品</h2>
@@ -22,10 +22,10 @@
         <% @items.limit(4).reverse.each do |item| %>
           <div class="col-md-3 mb-3">
             <a href="/items/<%= item.id %>" class="card h-100 m-0">
-                <%= image_tag item.get_image(200,200) %>
+               <%= image_tag item.get_image(300,300), class: "item-image", style: "margin: auto;" %>
               <div class="card-body">
                 <h5 class="card-title"><%= item.item_name %></h5>
-                <p class="card-text">¥<%= item.tax_price.to_s(:delimited, delimiter: ',') %></p>
+                <p class="card-text">¥<%= item.tax_price.to_s(:delimited)%></p>
               </div>
             </a>
           </div>

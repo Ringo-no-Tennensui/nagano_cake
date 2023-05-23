@@ -1,15 +1,11 @@
-<nav class="navbar navbar-expand-lg", style="background-color: #4c1c09;">
-  <div class="container-md">
-    <div class="mx-3">
-      <!--ロゴ-->
-        <% if admin_signed_in? %>
-        <%= link_to image_tag("nagano_cake_logo.png"),admin_root_path, width: '50%', height: '50%' %>
-        <% else %>
-        <%= link_to image_tag("nagano_cake_logo.png"),root_path, width: '50%', height: '50%' %>
-        <% end %>
-    </div>
-    <h1 class="text-center mt-3" style="font-family: 'IM Fell DW Pica SC', serif;">Nagano Cake</h1>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <header>
+    
+
+
+    <nav class="navbar navbar-expand-lg", style="background-color: #00000050;">
+      <h1 class="title mt-3" style="font-family: 'IM Fell DW Pica SC', serif;"><font class ="nagano">Nagano Cake</font></h1>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
       <ul class="navbar-nav ml-auto">
 
         <!--管理者がログインしていたら-->
@@ -49,15 +45,43 @@
         <!--顧客がログインしていたら-->
         <% elsif customer_signed_in? %>
 
-          <p class="mr-5 pr-5">
+          <h6 class="pt-3 mr-5 pr-5 text-light">
             ようこそ <%= current_customer.last_name %> さん!
-          </p>
+          </h6>
 
 
 
           <li>
-            <%= link_to customers_mypage_path, class: "nav-link text-light" do %>
+            <%= link_to customers_mypage_path, class: "nav-link menu" do %>
               マイページ
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to items_path, class: "nav-link menu" do %>
+              商品一覧
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to carts_path, class: "nav-link menu" do %>
+              カート
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link menu" do %>
+              ログアウト
+            <% end %>
+          </li>
+
+        <!--ログイン前画面-->
+        <% else %>
+
+
+          <li>
+            <%= link_to about_path, class: "nav-link text-light" do %>
+              about
             <% end %>
           </li>
 
@@ -68,41 +92,13 @@
           </li>
 
           <li>
-            <%= link_to carts_path, class: "nav-link text-light" do %>
-              カート
-            <% end %>
-          </li>
-
-          <li>
-            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
-              ログアウト
-            <% end %>
-          </li>
-
-        <!--ログイン前画面-->
-        <% else %>
-
-
-          <li>
-            <%= link_to about_path, class: "nav-link text-dark" do %>
-              about
-            <% end %>
-          </li>
-
-          <li>
-            <%= link_to items_path, class: "nav-link text-dark" do %>
-              商品一覧
-            <% end %>
-          </li>
-
-          <li>
-            <%= link_to new_customer_registration_path, class: "nav-link text-dark" do %>
+            <%= link_to new_customer_registration_path, class: "nav-link text-light" do %>
               新規登録
             <% end %>
           </li>
 
           <li>
-            <%= link_to new_customer_session_path, class: "nav-link text-dark" do %>
+            <%= link_to new_customer_session_path, class: "nav-link text-light" do %>
               ログイン
             <% end %>
           </li>
@@ -110,6 +106,7 @@
         <% end %>
 
       </ul>
+
     </div>
-  </div>
-</nav>
+  </nav>
+  </header>

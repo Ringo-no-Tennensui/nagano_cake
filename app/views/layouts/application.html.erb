@@ -11,11 +11,27 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <div id="particles-js"></div>
-    <header><%= render 'layouts/header' %></header>
+    <!--<div id="particles-js">-->
+    <div class = "backdiv">
+      <img src="/assets/cocoa.jpg" alt="">
+    </div>
+    
+  
+  <%= render 'layouts/header' %>
+    <div class="mx-3">
+      <div class = "header-inner mt-3">
+      <!--ロゴ-->
+        <% if admin_signed_in? %>
+        <%= link_to image_tag("nagano_cake_logo.png"),admin_root_path, width: '50%', height: '50%' %>
+        <% else %>
+        <%= link_to image_tag("nagano_cake_logo.png"),root_path, width: '50%', height: '50%' %>
+        <% end %>
+      </div>
+    </div>
     <main class= "mb-auto">
     <%= yield %>
     </main>
+    
     <footer><%= render 'layouts/footer' %></footer>
     <%= javascript_include_tag "particles" %>
     <%= javascript_include_tag "user" %>

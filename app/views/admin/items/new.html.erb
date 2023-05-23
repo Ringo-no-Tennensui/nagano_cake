@@ -2,8 +2,8 @@
   <!--エラー表示-->
   <%= flash[:alert] %>
   <h2>商品新規登録</h2>
-  <table>
   <%= form_with model: @item, url:admin_items_path, method: :post, local: true do |f| %>
+  <table>
     <tr>
       <!--商品画像フォーム-->
       <div class="form-group">
@@ -72,6 +72,6 @@
         </td>
       </div>
     </tr>
-    <% end %>
   </table>
+  <% end %>
 </div>
