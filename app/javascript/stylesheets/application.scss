@@ -12,12 +12,15 @@
 
 
 .top-message{
-  background-color: #5b183e80;
+  background-color: #001A43CA; 
 }
 
 .stroke{
-  color: #ff5d00;
-  -webkit-text-stroke: 1px #bea870;
+  background: linear-gradient(90deg, #a38131 0%, #e7c76d 33%, #ffe6c5 62%, #e3c05d 83%, #9d874e 100%);
+  background: -webkit-linear-gradient(0deg, #a38131 0%, #e7c76d 33%, #ffe6c5 62%, #e3c05d 83%, #9d874e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  // -webkit-text-stroke: 1px #bea870;
 }
 
 .item-image{

@@ -2,7 +2,7 @@
   <h2>注文履歴詳細</h2>
   <%= flash[:notice] %>
   <%= flash[:alert] %>
-  <table>
+  <table class ="table table-borderless">
     <tr>
       <td>購入者</td>
       <td>
@@ -38,7 +38,7 @@
   </table>
   <div class="row">
     <div class="col">
-      <table>
+      <table class ="table">
         <tr>
           <td>商品名</td>
           <td>単価(税込)</td>
@@ -66,7 +66,7 @@
 
     </div>
     <div class="col col-lg-3">
-      <table>
+      <table class ="table table-borderless">
         <tr>
           <td>商品合計</td>
           <td><%= @total.to_s(:delimited) %>円</td>
