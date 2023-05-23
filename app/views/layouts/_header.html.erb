@@ -13,27 +13,27 @@
       <!--管理者がログインしていたら-->
       <% if admin_signed_in? %>
       <li>
-        <%= link_to admin_items_path, class: "nav-link text-light" do %>
+        <%= link_to admin_items_path, class: "nav-link menu" do %>
           商品一覧
         <% end %>
       </li>
       <li>
-        <%= link_to admin_customers_path, class: "nav-link text-light" do %>
+        <%= link_to admin_customers_path, class: "nav-link menu" do %>
           会員一覧
         <% end %>
       </li>
       <li>
-        <%= link_to admin_root_path, class: "nav-link text-light" do %>
+        <%= link_to admin_root_path, class: "nav-link menu" do %>
           注文履歴一覧
         <% end %>
       </li>
       <li>
-        <%= link_to admin_genres_path, class: "nav-link text-light" do %>
+        <%= link_to admin_genres_path, class: "nav-link menu" do %>
           ジャンル一覧
         <% end %>
       </li>
        <li>
-        <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
+        <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link menu" do %>
           ログアウト
         <% end %>
       </li>
@@ -65,22 +65,22 @@
       <!--ログイン前画面-->
       <% else %>
         <li>
-          <%= link_to about_path, class: "nav-link text-light" do %>
+          <%= link_to about_path, class: "nav-link menu" do %>
             about
           <% end %>
         </li>
         <li>
-          <%= link_to items_path, class: "nav-link text-light" do %>
+          <%= link_to items_path, class: "nav-link menu" do %>
             商品一覧
           <% end %>
         </li>
         <li>
-          <%= link_to new_customer_registration_path, class: "nav-link text-light" do %>
+          <%= link_to new_customer_registration_path, class: "nav-link menu" do %>
             新規登録
           <% end %>
         </li>
         <li>
-          <%= link_to new_customer_session_path, class: "nav-link text-light" do %>
+          <%= link_to new_customer_session_path, class: "nav-link menu" do %>
             ログイン
           <% end %>
         </li>
