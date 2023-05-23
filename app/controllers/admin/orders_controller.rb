@@ -2,22 +2,22 @@ class Admin::OrdersController < ApplicationController
   
   def show
     @order = Order.find(params[:id])
-    @order_details = @order.order_details
+    @total = @order.order_details.inject(0) { |sum, order_detail| sum + order_detail.total_price }
   end
   
   def update
   @order = Order.find(params[:id])
   @order_details = @order.order_details
-  order.transaction do
+  Order.transaction do
     @order.update(order_params)
       if @order.order_status == "check"
-        @order_details.update_all(task_status: 1)
+        @order_details.update(task_status: 1)
       end
   end
     flash[:notice] = "注文ステータスを変更しました"
     redirect_to admin_order_path(@order)
   rescue => e
-    flash[:alert] = "ジャンル名を入力してください"
+    flash[:alert] = "ステータスの変更に失敗しました"
     redirect_to admin_order_path(@order)
   end
   
