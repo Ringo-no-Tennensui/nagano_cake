@@ -1,69 +1,71 @@
-<!--<h4>注文情報確認</h4>-->
-<!-- <tr>-->
-<!--  <th>支払い方法</th>-->
-<!--  <td><%= @order.payment_i18n %></td>-->
-<!-- </tr>-->
-<!-- <tr>-->
-<!--   <th>お届け先</th>-->
-<!--   <td>-->
-<!--    <%#= @order.ships_post_number %> #郵便番号-->
-<!--    <%#= @order.ships_address %>　 #住所-->
-<!--    <%#= @order.ships_name %>      #名前-->
-<!--   </td>-->
-<!--  </tr>-->
-
-  <h4>注文情報確認</h4><tr>
-<table>
-  <th>商品名</th>
-  <th>単価(税込)</th>
-  <th>数量</th>
-  <th>小計</th>
-  </tr>
-  <!--合計金額total初期化-->
-   <% total = 0 %>
-      <% @carts.each do |cart| %>
+<div class="container">
+  <h4 class="ml-5">注文情報確認</h4>
+  <div class="row">
+    <tr>
+    <table class= "col-md-6 ml-5 pl"  border="1" style="border-collapse: collapse">
+    <th></th>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+    </tr>
+    <!--合計金額total初期化-->
+     <% total = 0 %>
+        <% @carts.each do |cart| %>
+          <tr>
+            <td><%= image_tag cart.item.get_image(100,70), class: "cart-item-image", style: "margin: auto;" %></td>
+            <td><%= cart.item.item_name %></td>
+            <td><%= cart.item.tax_price.to_i %></td>
+            <td><%= cart.count %></td>
+            <td>
+               <%= cart.subtotal %>
+             </td>
+           </tr>
+           <!--<% total += cart.subtotal %> #アイテムごとに合計金額に加算-->
+       <% end %>
+    </table>
+    <table class= "col-md-2 ml-5" border="1" style="border-collapse: collapse" height= "40%">
+       <tr>
+         <th>送料</th>
+          <% @order.shipping_cost = 800 %>
+         <td><%= @order.shipping_cost %></td>
+        </tr>
+       <tr>
+         <th>商品合計</th>
+         <td><%= total.to_i %></td>
+        </tr>
         <tr>
-          <td>
-            <%= image_tag cart.item.get_image(100,70), class: "cart-item-image", style: "margin: auto;" %>
-            <%= cart.item.item_name %>
-          </td>
-          <td><%= cart.item.tax_price.to_i %></td>
-          <td><%= cart.count %></td>
-          <td>
-             <%= cart.subtotal %>
-           </td>
-         </tr>
-         <!--<% total += cart.subtotal %> #アイテムごとに合計金額に加算-->
-     <% end %>
-</table>
-
-<table>
-     <tr>
-       <th>送料</th>
-        <% @order.shipping_cost = 800 %>
-       <td><%= @order.shipping_cost %></td>
-      </tr>
-     <tr>
-       <th>商品合計</th>
-       <td><%= total.to_i %></td>
+          <th>請求金額</th>
+          <% @order.pay_price = @order.shipping_cost + total.to_i %>
+          <td><%= @order.pay_price %></td>
+        </tr>
+    </table>
+    <table class="ml-5 mt-5">
+      <tr>
+        <th width ="35%"><h4>支払い方法</h4></th>
+        <td width ="65%"><%= @order.payment_i18n %></td>
       </tr>
       <tr>
-        <th>請求金額</th>
-        <% @order.pay_price = @order.shipping_cost + total.to_i %>
-        <td><%= @order.pay_price %></td>
+        <th><h4>お届け先</h4></th>
+        <td>
+          <%= @order.ships_post_number %>
+          <%= @order.ships_address %>
+          <%= @order.ships_name %>
+        </td>
       </tr>
-</table>
-
-        <div class="row justify-content-center py-5">
-            <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
-            <%= f.hidden_field :customer_id %>
-            <%= f.hidden_field :ships_address %>
-            <%= f.hidden_field :ships_post_number %>
-            <%= f.hidden_field :ships_name %>
-            <%= f.hidden_field :payment %>
-            <%= f.hidden_field :shipping_cost %>
-            <%= f.hidden_field :pay_price %>
-            <%= f.hidden_field :order_status %>
-            <%= f.submit "注文を確定する", class: "btn btn-success" %>
-        <% end %>
-        </div>
+    </table>
+  </div>
+  <div class="row justify-content-center py-5">
+      <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+      <%= f.hidden_field :customer_id %>
+      <%= f.hidden_field :ships_address %>
+      <%= f.hidden_field :ships_post_number %>
+      <%= f.hidden_field :ships_name %>
+      <%= f.hidden_field :payment %>
+      <%= f.hidden_field :shipping_cost %>
+      <%= f.hidden_field :pay_price %>
+      <%= f.hidden_field :order_status %>
+      <%= f.submit "注文を確定する", class: "btn btn-success" %>
+  <% end %>
+  </div>
+</div>

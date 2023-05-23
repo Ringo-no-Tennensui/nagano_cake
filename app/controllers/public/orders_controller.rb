@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  # before_action :order_confirm_access, only: [:confirm, :show]
   def new
     @carts = current_customer.carts
     if @carts.any?
@@ -43,9 +44,11 @@ class Public::OrdersController < ApplicationController
         # collection.selectであれば
       elsif params[:order][:address_option] == "1"
         ship = ShippingAddress.find_by(params[:order][:customer_id])
+        if current_customer.shipping_addresses.exists?
         @order.ships_post_number = ship.ships_post_number
         @order.ships_address = ship.ships_address
         @order.ships_name = ship.ships_name
+        end
 
         # 新規住所入力であれば
       elsif params[:order][:address_option] == "2"
@@ -58,6 +61,18 @@ class Public::OrdersController < ApplicationController
 
         @carts = current_customer.carts.all
         @order.customer_id = current_customer.id
+
+    if @order.ships_post_number && @order.ships_address && @order.ships_name && @order.payment
+      if @order.ships_post_number =~ /\A[0-9]{7}\z/
+       render :confirm
+      else
+       flash[:notice] = "・郵便番号が正しくありません"
+       redirect_to request.referer
+      end
+    else
+     flash[:notice] = "・未入力の項目があります"
+     redirect_to request.referer
+    end
   end
 
   def thanks
@@ -72,6 +87,12 @@ class Public::OrdersController < ApplicationController
     @total = @order.order_details.inject(0) { |sum, order_detail| sum + order_detail.total_price }
   end
 
+  def order_confirm_access
+    @order = Order.new(order_params)
+    if @order == nil
+     redirect_to new_order_path
+    end
+  end
 
  private
     def order_params
