@@ -1,13 +1,5 @@
-    <div class="mx-3">
-      <div class = "header-inner mt-3">
-      <!--ロゴ-->
-        <% if admin_signed_in? %>
-        <%= link_to image_tag("nagano_cake_logo.png"),admin_root_path, width: '50%', height: '50%' %>
-        <% else %>
-        <%= link_to image_tag("nagano_cake_logo.png"),root_path, width: '50%', height: '50%' %>
-        <% end %>
-      </div>
-    </div>
+  <header>
+    
 
 
     <nav class="navbar navbar-expand-lg", style="background-color: #00000050;">
@@ -117,3 +109,4 @@
 
     </div>
   </nav>
+  </header>
