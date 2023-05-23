@@ -1,5 +1,4 @@
 class Public::OrdersController < ApplicationController
-  # before_action :order_confirm_access, only: [:confirm, :show]
   def new
     @carts = current_customer.carts
     if @carts.any?
@@ -85,13 +84,6 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @total = @order.order_details.inject(0) { |sum, order_detail| sum + order_detail.total_price }
-  end
-
-  def order_confirm_access
-    @order = Order.new(order_params)
-    if @order == nil
-     redirect_to new_order_path
-    end
   end
 
  private

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'genre', genres: @genres %>
+    </div>
+    <div class='col-md-10'>
+      <h2><%= @genre.genre %>の検索結果</h2>
+        <p>[全<%= @items.count %>件]</p>
+      <div class ="item-box">
+        <div class = "row">
+        <% @items.each do |item| %>
+          <div class ="gold col-md-3 mb-3">
+          <a href="/items/<%= item.id %>" class="card h-100 m-0"
+            style="background-color: #001A43;">
+            <%= image_tag item.get_image(200,200), class: "item-image", style: "margin: auto;" %><br>
+            <h5 class="gold card-title"><%= item.item_name %></h5>
+            <p class="gold card-text">¥<%= item.tax_price.to_s(:delimited) %></p>
+          </a>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

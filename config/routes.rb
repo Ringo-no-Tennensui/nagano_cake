@@ -19,26 +19,26 @@ Rails.application.routes.draw do
         get 'thanks'
       end
     end
-      
+
     resources :carts, only:[:index, :create, :update, :destroy] do
       collection do
         delete 'destroy_all'
       end
     end
-    
+
     get 'customers/mypage' => 'customers#show'
     resource :customers, only:[:edit, :update,] do
     collection do
       get 'confirm'
       patch 'withdraw'
-  
-      end  
+
+      end
     end
-    
+
     resources :items, only:[:show, :index]
     root to: 'homes#top'
     get '/about' =>'homes#about'
-
+    get '/index/:id' =>'homes#index', as: 'index'
   end
 
 # 顧客用
