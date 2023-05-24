@@ -10,18 +10,19 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    customer = current_customer
-    if customer.update(customer_params)
+    @customer = current_customer
+    if @customer.update(customer_params)
       flash[:notice] = "登録情報を編集しました"
       redirect_to customers_mypage_path
     else
       flash[:alert] = "編集に失敗しました"
-      render :show
+      render :edit
     end
   end
 
   def withdraw
     @customer = current_customer
+    # 退会のボタンを押した場合
     if @customer.update(member_status: true)
       reset_session
       redirect_to root_path

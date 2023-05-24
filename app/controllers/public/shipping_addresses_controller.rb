@@ -2,7 +2,6 @@ class Public::ShippingAddressesController < ApplicationController
   def index
     @shipping_address = ShippingAddress.new
     @shipping_addresses = current_customer.shipping_addresses
-    # @shipping_addresses = ShippingAddress.all
   end
 
   def edit
@@ -26,7 +25,6 @@ class Public::ShippingAddressesController < ApplicationController
     @shipping_address = ShippingAddress.find(params[:id])
     if @shipping_address.update(shipping_address_params)
       flash[:notice] = "配送先を編集しました"
-      # redirect_to edit_shipping_address_path(@shipping_address.id)
       redirect_to shipping_addresses_path
     else
       flash[:alert] = "編集に失敗しました"

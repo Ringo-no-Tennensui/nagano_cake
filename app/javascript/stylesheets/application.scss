@@ -10,7 +10,6 @@
   background: -webkit-linear-gradient(0deg, #a38131 0%, #e7c76d 33%, #ffe6c5 62%, #e3c05d 83%, #9d874e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  // -webkit-text-stroke: 1px #bea870;
 }
 
 .item-image{
@@ -61,11 +60,6 @@ margin-bottom: 80px;
 }
 
 .gold{
-  // color: #DA8E00;
-  // background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03, #DA8E00, #EDAC06, #F7DE05, #ECB802, #EDAC06);
-  // -webkit-background-clip: text;
-  // -webkit-text-fill-color: transparent;
-
   background: linear-gradient(90deg, #a38131 0%, #e7c76d 33%, #ffe6c5 62%, #e3c05d 83%, #9d874e 100%);
   background: -webkit-linear-gradient(0deg, #a38131 0%, #e7c76d 33%, #ffe6c5 62%, #e3c05d 83%, #9d874e 100%);
   -webkit-background-clip: text;
@@ -80,32 +74,4 @@ margin-bottom: 80px;
   position: absolute;
   top: 90px;
   right: 10px;
-}
-
-#search-wrap {
-     position: absolute;/*絶対配置にして*/
-   z-index: 2;/*最前面に設定。数字は変更可*/
-   top:10px;
-   right:10px;
-}
-
-/*テキスト入力input設定*/
- #search-text{
-  -webkit-appearance:none;/*SafariやChromeのデフォルトの設定を無効*/
-  width: 60px;/*テキスト入力エリアが伸びる前の横幅*/
-  height: 60px;
-    padding: 20px;
-  border: none;
-  background:#fff url("https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/7-2-3/img/icon_search.svg") no-repeat 17px center;/*虫眼鏡アイコンを背景に表示*/
-  background-size: 25px 25px;
-  transition: all 0.5s;/*transitionを使ってスムースに伸ばす*/
-  outline: none;
-  cursor: pointer;/*カーソルを指マークに*/
-}
-
-/*テキスト入力inputにフォーカスした時の形状*/
- #search-text:focus {
-  width: 250px;/*テキスト入力エリアが伸びる後の横幅*/
-  padding: 20px 0 20px 60px;
-  box-shadow: 0 2px rgba(6,0,1,.26);
 }

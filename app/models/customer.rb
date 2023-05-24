@@ -19,10 +19,12 @@ class Customer < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true,length: { minimum: 6 }
 
+  # 氏名をまとめたメソッド
   def customer_name
     last_name + first_name
   end
 
+  # 姓か名に１文字でも該当するキーワードがあればとってくる
   def self.looks(search, word)
       @customers = Customer.where("first_name OR last_name LIKE(?)", "%#{word}%")
   end

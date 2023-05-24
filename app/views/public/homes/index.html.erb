@@ -10,14 +10,19 @@
       <div class ="item-box">
         <div class = "row">
         <% @items.each do |item| %>
-          <div class ="gold col-md-3 mb-3 text-center">
-          <a href="/items/<%= item.id %>" class="card h-100 m-0" style="background-color: #001A43;">
-            <%= image_tag item.get_image(200,200), class: "item-image-card mt-1 mx-auto" %><br>
-            <div class ="mt-5" style= "background-color: #001A43;">
-              <h5 class="gold card-title"><%= item.item_name %></h5>
-              <p class="gold card-text">¥<%= item.tax_price.to_s(:delimited) %></p>
-            </div>
-          </a>
+          <div class ="col-md-3 mb-3 text-center">
+            <a href="/items/<%= item.id %>" class="item card h-100 m-0" style="background-color: #001A43;">
+                <%= image_tag item.get_image(200,200), class: "item-image-card mt-1 mx-auto" %><br>
+                <div class = "mt-5" style="background-color:#001A43;">
+                  <strong class = "gold card-title"><%= item.item_name %></strong>
+                  <p class="gold card-text">¥<%= item.tax_price.to_s(:delimited) %></p>
+                </div>
+                <% if item.sales_status == "sale" %>
+                  <p class ="card-text" style = "color: #63ED01;" >販売中</p>
+                <% else %>
+                  <p class ="card-text" style = "color: #ff89b1;" >売切れ</p>
+                <% end %>
+             </a>
           </div>
         <% end %>
         </div>

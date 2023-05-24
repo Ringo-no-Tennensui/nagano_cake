@@ -2,7 +2,7 @@ class Public::ItemsController < ApplicationController
 
   def index
     @item = Item.all
-    # @item = Item.where(sales_status: "sale")
+    # ページネーションのための８種類のみ取ってくる
     @items = @item.page(params[:page]).per(8)
     @genres = ItemGenre.all
   end
