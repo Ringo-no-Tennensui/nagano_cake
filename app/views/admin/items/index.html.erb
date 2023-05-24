@@ -2,20 +2,20 @@
   <!--フラッシュ表示-->
   <%= flash[:notice] %>
   <div class= "row">
-    <div class= "col"><h2>商品一覧</h2></div>
+    <div class= "col"><h2>商品一覧</h2></div> 
+    <!--アイコンから新規商品登録へ行ける-->
+    <%= link_to new_admin_item_path, class: "col col-lg-2" do %>
+        <h3><i class="fas fa-plus-circle"></i></h3>
+    <% end %>
     <div class= "col col-lg-2">
-      <!--アイコンから新規商品登録へ行ける-->
-      <%= link_to new_admin_item_path, class: "col col-lg-2" do %>
-        <i class="fas fa-plus-circle"></i>
-      <% end %>
     </div>
   </div>
-  <table class="mx-auto">
+  <table class="table mx-auto">
     </tr>
     <tr>
       <td>商品ID</td>
       <td>商品名</td>
-      <td>税抜価格</td>
+      <td class ="text-right">税抜価格</td>
       <td>ジャンル</td>
       <td>ステータス</td>
     </tr>
@@ -30,5 +30,9 @@
     </tr>
     <% end %>
   </table>
-  <%= paginate @items %>
+  <div class ="row">
+    <div class ="mx-auto">
+     <%= paginate @items %>
+   </div>
+  </div>
 </div>
