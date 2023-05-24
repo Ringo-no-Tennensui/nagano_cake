@@ -1,12 +1,15 @@
 <div class="container">
-  <div class="row">
     <% if admin_signed_in? %>
     <div class='col-md-10'>
       <h2><%= @word %>の検索結果</h2>
-        <p>[全<%= @customers.count %>件]</p>
-      <div class ="item-box">
-        <div class = "row">
-        <table>
+      <p>[全<%= @customers.count %>件]</p>
+      <table class ="table">
+      <tr bgcolor="#BFC5CA">
+        <td>会員ID</td>
+        <td>氏名</td>
+        <td>メールアドレス</td>
+        <td>ステータス</td>
+      </tr>
         <% @customers.each do |customer| %>
           <tr>
             <td><%= customer.id %></td>
@@ -15,11 +18,10 @@
             <td><%= customer.member_status_i18n %></td>
           </tr>
         <% end %>
-        </table>
-        </div>
-      </div>
+      </table>
     </div>
     <% else %>
+    <div class="row">
     <div class="col-md-2">
       <%= render 'public/homes/genre', genres: @genres %>
     </div>
@@ -43,6 +45,6 @@
         </div>
       </div>
     </div>
-    <% end %>
   </div>
+  <% end %>
 </div>
