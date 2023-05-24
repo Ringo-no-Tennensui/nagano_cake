@@ -20,4 +20,8 @@ class Item < ApplicationRecord
     (image.attached?) ? image : 'no_image.jpg'
     image.variant(resize_to_limit: [width, height]).processed
   end
+
+  def self.looks(search, word)
+      @items = Item.where("item_name OR item_explanation LIKE?", "%#{word}%")
+  end
 end
