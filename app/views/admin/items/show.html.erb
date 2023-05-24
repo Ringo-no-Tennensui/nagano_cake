@@ -25,6 +25,7 @@
       </tr>
       <tr>
         <td>販売ステータス</td>
+        <!--販売ステータスを詳細画面に表示するためを表示-->
         <% if @item.sales_status == "sale" %>
           <td style = "color: #4ec51e;">販売中</td>
         <% else %>
@@ -34,5 +35,6 @@
     </table>
     <!--item_editに飛べるリンク-->
     <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success mt-5" %>
+  </div>
   </div>
 </div>

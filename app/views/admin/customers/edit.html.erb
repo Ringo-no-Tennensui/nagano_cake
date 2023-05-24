@@ -75,6 +75,7 @@
     <tr>
       <div class="form-group">
       <td>会員ステータス</td>
+      <!--会員の退会、有効を選択するラジオボタン-->
       <td>
       　<%= f.radio_button :member_status, Customer.member_statuses.key(false) %>
         <%= f.label :member_status_exist, Customer.member_statuses_i18n[:exist] %>
