@@ -8,32 +8,29 @@
   <div class='col-md-5 mt-5'>
    <%= image_tag @item.get_image(300,210), class: "show-item-image", style: "margin: auto;" %>
     </div>
-    
+
     <div class= "col-md-4 mt-5">
-    <%= @item.item_name %></br>
+    <p><strong class = "gold" ><%= @item.item_name %></strong></p></br>
+    <p class = "gold" ><%= @item.item_explanation %></p>
+     <p class = "gold" >¥<%= @item.tax_price.to_s(:delimited)%>（税込)</p>
 
-    <%= @item.item_explanation %>
-     <p>
-    ¥<%= @item.tax_price.to_s(:delimited)%>（税込)
-     </p>
-
-    <% if customer_signed_in? %>
-
-     <%= form_with model: @cart do |f| %>
-
+  <!--ログインしてて、商品が販売中なら、カートに入れれる-->
+  <% if customer_signed_in? && @item.sales_status == "sale" %>
+    <%= form_with model: @cart do |f| %>
       <%= f.hidden_field :customer_id, :value => current_customer.id %>
-
       <%= f.hidden_field :item_id, :value => @item.id %>
       <p style>
       <%= f.submit "カートに入れる"%>
       <%= f.select :count, *[1..10] %>
       </p>
-
-      
-
     <% end %>
-
-   <% end %>
+  <% else %>
+    <% if @item.sales_status == "sale" %>
+      <p style = "color: #3eb370;" >販売中</p>
+    <% else %>
+      <p style = "color: #ea0032;" >売切れ</p>
+    <% end %>
+  <% end %>
 
   </div>
  </div>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'searchs/search'
   # 管理者側のルーティング設定
   namespace :admin do
     resources :orders, only:[:show, :update]
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
     resources :items, only:[:show, :index]
     root to: 'homes#top'
     get '/about' =>'homes#about'
-    get '/index/:id' =>'homes#index', as: 'index'
+    get '/genre/:id' =>'homes#index', as: 'index'
   end
 
 # 顧客用
