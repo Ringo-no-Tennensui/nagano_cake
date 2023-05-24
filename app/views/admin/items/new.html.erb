@@ -37,6 +37,7 @@
       <div class="form-group">
         <td><h4>ジャンル</h4></td>
         <td>
+          <!--アイテムのジャンルを既存のジャンルから選択するためのボックス-->
           <%= f.select :item_genre_id, options_from_collection_for_select(ItemGenre.all, :id, :genre),{ :include_blank => '--選択してください--' }, :required => true  %>
         </td>
       </div>

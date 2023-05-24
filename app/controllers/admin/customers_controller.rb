@@ -1,12 +1,12 @@
 class Admin::CustomersController < ApplicationController
 
   def index
-    @customers = Customer.all.page(
-    params[:page]).per(10)
+    #会員者情報　１ページの表示件数:10件
+    @customers = Customer.all.page(params[:page]).per(10) 
   end
 
   def show
-  @customer=Customer.find(params[:id])
+    @customer=Customer.find(params[:id])
   end
 
   def edit

@@ -27,6 +27,7 @@
       <td class="text-right col-2"><%= item.item_price.to_s(:delimited) %>円</td>
       <td class="col-2"><%= item.item_genre.genre %></td>
       <td>
+        <!--販売ステータスを一覧で表示するための記述-->
       <% if item.sales_status == "sale" %>
         <p style = "color: #4ec51e;">販売中</p>
       <% else %>
