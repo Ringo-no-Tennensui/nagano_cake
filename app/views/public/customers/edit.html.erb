@@ -1,5 +1,4 @@
   <!--フラッシュ表示-->
-  <%= flash[:notice] %>
   <%= flash[:alert] %>
 <div class=container>
   <%= form_with model: @customer, url: customers_path do |f| %>
@@ -83,7 +82,7 @@
           <%= f.submit "編集内容を保存", class:"btn btn-success" %>
         </td>
         <td>
-          <%= link_to "退会する", confirm_customers_path, class:"btn btn-danger" %>
+          <%= link_to "退会する", confirm_customers_path, data: { confirm: '退会しますか?' } , class:"btn btn-danger" %>
         </td>
       </tr>
     </table>
