@@ -22,4 +22,9 @@ class Customer < ApplicationRecord
   def customer_name
     last_name + first_name
   end
+
+  def self.looks(search, word)
+      @customers = Customer.where("first_name OR last_name LIKE(?)", "%#{word}%")
+  end
+
 end

@@ -86,5 +86,11 @@
         </li>
       <% end %>
     </ul>
+    <div class="search_form">
+      <%= form_with url: searchs_search_path, local: true, method: :get do |f| %>
+        <%= f.text_field :word %>
+        <%= f.submit "検索" %>
+      <% end %>
+    </div>
   </div>
 </nav>
