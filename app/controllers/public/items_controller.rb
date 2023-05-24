@@ -1,9 +1,9 @@
 class Public::ItemsController < ApplicationController
 
   def index
-    #@item = Item.find(params[:id])
-    @items = Item.page(params[:page]).per(8)
     @item = Item.all
+    # @item = Item.where(sales_status: "sale")
+    @items = @item.page(params[:page]).per(8)
     @genres = ItemGenre.all
   end
 
