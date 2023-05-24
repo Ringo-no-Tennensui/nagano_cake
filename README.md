@@ -1,5 +1,5 @@
 # ながのCAKE　ECサイト
-<img alt="Nagano-Caki-Logo0" src="https://github.com/uswitch-02/bookers2/assets/124918064/d6a4e6a7-5112-49b6-b076-d0807ca50558" width = 300>
+<img alt="Nagano-Caki-Logo0" src="https://github.com/uswitch-02/bookers2/assets/124918064/22bd6037-c1d0-482e-bf47-aeffbc3376af" width = 100>
 
 ---
 * [概要](#概要)
@@ -21,7 +21,7 @@
  - ruby 3.1.2
  - Rails 6.1.7.3
  - Bootstrap v4.5.3
-　
+
 # 実装した機能
 - 顧客側
     - 会員登録、ログイン・ログアウト、退会
@@ -41,7 +41,7 @@
     - ワード検索機能
       - 顧客側：関連ワードを使用しての「商品検索」
       - 管理者側：関連ワードを使用しての「顧客検索」
-    - 商品ジャンル検索
+    - 商品ジャンル検索機能
 
 #### 管理者ページへのログイン方法
 ~~~
