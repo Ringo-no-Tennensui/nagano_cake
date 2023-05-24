@@ -17,8 +17,11 @@
     </tr>
     <tr>
       <td>配送先</td>
-      <td><%= @order.ships_post_number %><%= @order.ships_address %></td><br>
-      <td><%= @order.ships_name%></td>
+      <td>
+        <%= @order.ships_post_number %>
+        <%= @order.ships_address %><br>
+        <%= @order.ships_name%>
+      </td>
     </tr>
     <tr>
       <td>支払方法</td>
@@ -29,8 +32,6 @@
       <%= form_with model: @order, url: admin_order_path, method: :patch,local: true do |f| %>
       <td>
       <%= f.select :order_status, Order.order_statuses_i18n.invert, class: "form-control" %>
-      </td>
-      <td>
       <%= f.submit "更新", class: "btn btn-success" %>
       </td>
       <% end %>
