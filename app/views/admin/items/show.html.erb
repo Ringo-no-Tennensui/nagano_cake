@@ -25,7 +25,11 @@
       </tr>
       <tr>
         <td>販売ステータス</td>
-        <td><%= @item.sales_status_i18n %></td>
+        <% if @item.sales_status == "sale" %>
+          <td style = "color: #4ec51e;">販売中</td>
+        <% else %>
+          <td style = "color: #ff3838;">売切れ</td>
+        <% end %>
       </tr>
     </table>
     <!--item_editに飛べるリンク-->
