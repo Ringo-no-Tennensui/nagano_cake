@@ -1,14 +1,12 @@
-
 <div class ="mt-5" style="background-color: #001A43CA;">
-  <div class = "gold" style ="border:solid 1px;">
-    <div class= "gold" style ="border-bottom: solid 1px;">
-      <p class ="gold" style="text-align: center; line-height:30px;">ジャンル検索</p>
-      </div>
-    
-      <% genres.each do |genre| %>
-      <p class ="gold"><%= genre.genre %></p><br>
+ <div class = "gold" style ="border:solid 1px;">
+  <div class= "gold" style ="border-bottom: solid 1px;">
+    <h5 class ="gold" style="text-align: center; line-height:30px;">ジャンル検索</h5>
+    </div>
+    <% genres.each do |genre| %>
+      <%= link_to index_path(genre.id) do %>
+      <h5 class ="gold">・<%= genre.genre %></h5><br>
       <% end %>
-
-  </div>
+    <% end %>
+    </div>
 </div>
-

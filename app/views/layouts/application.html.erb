@@ -10,20 +10,12 @@
     <link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC" rel="stylesheet">
   </head>
 
-  <body class="d-flex flex-column vh-100">
-    <!--<div id="particles-js">-->
-    <div class = "backdiv mb-auto mx-auto">
-      <img src="/assets/wallpaper1.jpg" alt="">
-    </div>
-
-
+  <body class="d-flex flex-column vh-100 backdiv">
   <header><%= render 'layouts/header' %></header>
-    <main class= "mb-auto">
+  <main class= "mb-auto">
     <%= yield %>
-    </main>
-
-    <footer><%= render 'layouts/footer' %></footer>
-    <%= javascript_include_tag "particles" %>
+  </main>
+  <footer><%= render 'layouts/footer' %></footer>
     <%= javascript_include_tag "user" %>
   </body>
 </html>

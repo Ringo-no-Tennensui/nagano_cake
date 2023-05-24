@@ -1,16 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-#particles-js{
-  position:fixed;
-  z-index:-1;
-  width: 100%;
-  height: 100%;
-  background-color:#522A5E;
-}
-
-
-
 .top-message{
   background-color: #001A43CA; 
 }
@@ -28,6 +18,10 @@
   height: 140px;
 }
 
+.item-image-card{
+  width: 95%;
+  height: 140px;
+}
 .cart-item-image{
   width: 100px;
   height: 70px;
@@ -56,10 +50,14 @@ margin-bottom: 80px;
 }
 
 .backdiv{
+  background-image: url("/assets/wallpaper1.jpg");
   position: absolute;
   width: 100%;
   height: 100vh;
   z-index: -5;
+  background-size: cover;               /* 全画面 */
+  background-attachment: fixed;         /* 固定 */
+  background-position: center center;   /* 縦横中央 */
 }
 
 .gold{
@@ -67,7 +65,7 @@ margin-bottom: 80px;
   // background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03, #DA8E00, #EDAC06, #F7DE05, #ECB802, #EDAC06);
   // -webkit-background-clip: text;
   // -webkit-text-fill-color: transparent;
-  
+
   background: linear-gradient(90deg, #a38131 0%, #e7c76d 33%, #ffe6c5 62%, #e3c05d 83%, #9d874e 100%);
   background: -webkit-linear-gradient(0deg, #a38131 0%, #e7c76d 33%, #ffe6c5 62%, #e3c05d 83%, #9d874e 100%);
   -webkit-background-clip: text;
