@@ -7,6 +7,7 @@ class Order < ApplicationRecord
 
   validates :shipping_cost, presence: true
 
+  # セレクトボタン内に1行でまとめて表示させるためのメソッド
   def address_display
     '〒' + ships_post_number + ' '+ ships_address + ' ' + ships_name
   end

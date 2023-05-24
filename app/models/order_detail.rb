@@ -4,6 +4,7 @@ class OrderDetail < ApplicationRecord
   belongs_to :order
   belongs_to :item
 
+  # アイテム毎の小計を算出
   def total_price
     item_price.to_i * quantity.to_i
   end

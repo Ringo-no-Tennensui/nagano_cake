@@ -9,6 +9,7 @@ class Public::HomesController < ApplicationController
     if params[:id]
     @genres = ItemGenre.all
     @genre = ItemGenre.find(params[:id])
+    # 同じジャンルIDを持つ全てのアイテムを手に入れる
     @items = @genre.items.where(params[:id])
     else
     @items = Item.all
