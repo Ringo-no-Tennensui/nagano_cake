@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg", style="background-color: #001A43;">
-  <h1 class="title mt-3" style="font-family: 'IM Fell DW Pica SC', serif;"><font class ="gold">Nagano Cake</font></h1>
+  <h1 class="title mt-2" style="font-family: 'IM Fell DW Pica SC', serif;"><font class ="gold">Nagano Cake</font></h1>
   <div class="navbar-collapse" >
       <!--ロゴ-->
     <div class = "header_inner">
@@ -39,9 +39,9 @@
       </li>
       <!--顧客がログインしていたら-->
       <% elsif customer_signed_in? %>
-        <h4 class="pt-3 mr-5 pr-5 text-light">
-          ようこそ <%= current_customer.last_name %> さん!
-        </h4>
+        <p class="text-light mr-5 pr-5 mt-2">
+          ようこそ <strong><%= current_customer.last_name %></strong> さん!
+        </p>
         <li>
           <%= link_to customers_mypage_path, class: "nav-link gold" do %>
             マイページ
@@ -86,7 +86,7 @@
         </li>
       <% end %>
     </ul>
-    <div class="search_form">
+    <div class="search_form serch_inner">
       <%= form_with url: searchs_search_path, local: true, method: :get do |f| %>
         <%= f.text_field :word %>
         <%= f.submit "検索" %>
