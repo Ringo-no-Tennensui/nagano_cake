@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @items = Item.all
+    @items = Item.where(sales_status: "sale")
     @genres = ItemGenre.all
   end
 
