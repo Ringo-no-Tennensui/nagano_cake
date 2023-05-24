@@ -26,7 +26,14 @@
       <td class="col-3"><%= link_to admin_item_path(item) do%><%= item.item_name %><% end %></td>
       <td class="text-right col-2"><%= item.item_price.to_s(:delimited) %>円</td>
       <td class="col-2"><%= item.item_genre.genre %></td>
-      <td><%= item.sales_status_i18n %></td>
+      <td>
+      <% if item.sales_status == "sale" %>
+        <p style = "color: #4ec51e;">販売中</p>
+      <% else %>
+        <p style = "color: #ff3838;">売切れ</p>
+      <% end %>
+      </td>
+    </tr>
     </tr>
     <% end %>
   </table>
