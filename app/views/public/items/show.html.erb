@@ -5,30 +5,36 @@
    <%= render 'public/homes/genre', genres: @genres %>
   </div>
   <!--商品詳細画面-->
-  <div class='col-md-5 mt-5'>
-   <%= image_tag @item.get_image(300,210), class: "show-item-image", style: "margin: auto;" %>
-    </div>
-
-    <div class= "col-md-4 mt-5">
-    <p><strong class = "gold" ><%= @item.item_name %></strong></p></br>
-    <p class = "gold" ><%= @item.item_explanation %></p>
+  
+  <div class='col-md-5 mt-5 pl-5'>
+   <%= image_tag @item.get_image(300,210), class: "show-item-image shadow p-3 mb-5 bg-white", style: "margin: auto;" %>
+  </div>
+  
+  
+   <div class= "col-md-4 mt-5">
+    <div class = "item_cd" style = "background-color: #001A43;　">
+     <p><strong class = "gold" ><%= @item.item_name %></strong></p></br>
+     <p class = "golden" ><%= @item.item_explanation %></p>
      <p class = "gold" >¥<%= @item.tax_price.to_s(:delimited)%>（税込)</p>
+    </div>
+   
 
   <!--ログインしてて、商品が販売中なら、カートに入れれる-->
   <% if customer_signed_in? && @item.sales_status == "sale" %>
     <%= form_with model: @cart do |f| %>
       <%= f.hidden_field :customer_id, :value => current_customer.id %>
       <%= f.hidden_field :item_id, :value => @item.id %>
-      <p style>
+      <p class ="mt-3">
       <%= f.submit "カートに入れる"%>
       <%= f.select :count, *[1..10] %>
       </p>
     <% end %>
   <% else %>
+    <!--販売ステータスで色分けを行う-->
     <% if @item.sales_status == "sale" %>
       <p style = "color: #63ed01;" >販売中</p>
     <% else %>
-      <p style = "color: ##ff89b1;" >売切れ</p>
+      <p style = "color: #ff89b1;" >売切れ</p>
     <% end %>
   <% end %>
 

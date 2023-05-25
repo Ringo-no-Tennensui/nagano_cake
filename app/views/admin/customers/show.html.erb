@@ -34,7 +34,12 @@
     </tr>
     <tr>
       <td>会員ステータス</td>
-      <td><%= @customer.member_status_i18n %></td>
+        <!--会員ステータスを表示し、色分け-->
+    <% if @customer.member_status == "exist" %>
+      <td style = "color: #4ec51e;">有効</td>
+    <% else %>
+      <td style = "color: #ff3838;">退会</td>
+    <% end %>
     </tr>
     <tr>
       <td></td>
