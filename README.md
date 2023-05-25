@@ -1,5 +1,5 @@
 # ながのCAKE　ECサイト
-<img alt="Nagano-Caki-Logo0" src="https://github.com/uswitch-02/bookers2/assets/124918064/22bd6037-c1d0-482e-bf47-aeffbc3376af" width = 100>
+<img alt="Nagano-Caki-Logo0" src="https://github.com/uswitch-02/bookers2/assets/124918064/85ee0fd3-4ec7-4338-8853-0bb3c54df4bb" width = 400>
 
 ---
 * [概要](#概要)
