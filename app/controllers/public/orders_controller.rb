@@ -59,19 +59,11 @@ class Public::OrdersController < ApplicationController
     end
     @carts = current_customer.carts.all
     @order.customer_id = current_customer.id
-    
-    if @order.ships_post_number && @order.ships_address && @order.ships_name && @order.payment
-      # 郵便番号（ハイフンなし7桁）
-      if @order.ships_post_number =~ /\A[0-9]{7}\z/
-       render :confirm
-      else
-       flash[:notice] = "・郵便番号が正しくありません"
+      # 郵便番号（ハイフンなし7桁）、配送先住所、配送先氏名が入力されてたらture
+      unless @order.ships_post_number =~ /\A[0-9]{7}\z/ && !@order.ships_address.empty? && !@order.ships_name.empty?
+       flash[:notice] = "・郵便番号が正しくありません、または未入力の項目があります"
        redirect_to request.referer
       end
-    else
-    flash[:notice] = "・未入力の項目があります"
-    redirect_to request.referer
-    end
   end
 
   def thanks
