@@ -26,7 +26,8 @@ class Customer < ApplicationRecord
 
   # 姓か名に１文字でも該当するキーワードがあればとってくる
   def self.looks(search, word)
-      @customers = Customer.where("first_name OR last_name LIKE(?)", "%#{word}%")
+      @customers = Customer.where("first_name LIKE? OR last_name LIKE? OR first_name_kana LIKE? OR last_name_kana LIKE? OR phone_number LIKE? OR address LIKE? OR email LIKE?",
+      "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%")
   end
 
 end
