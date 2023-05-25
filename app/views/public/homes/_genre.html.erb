@@ -5,7 +5,7 @@
     </div>
     <% genres.each do |genre| %>
       <%= link_to index_path(genre.id) do %>
-      <h5 class ="gold">・<%= genre.genre %></h5><br>
+      <h5 class ="gold btnshine" style ="width: 100%"><%= genre.genre %></h5><br>
       <% end %>
     <% end %>
     </div>

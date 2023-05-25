@@ -25,7 +25,7 @@
       <div class="card-deck">
         <% @items.last(4).reverse.each do |item| %>
           <div class="col-md-3 mb-3 text-center">
-            <a href="/items/<%= item.id %>" class="card h-100 m-0"style="background-color: #001A43;">
+            <a href="/items/<%= item.id %>" class="card h-100 m-0" style="background-color: #001A43; text-decoration: none;">
                <%= image_tag item.get_image(300,300), class: "item-image-card mt-1 mx-auto"%>
               <div class="card-body" style="background-color :#001A43;">
                 <strong class="gold card-title"><%= item.item_name %></strong>
