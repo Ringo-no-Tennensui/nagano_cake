@@ -95,7 +95,7 @@ item8 = Item.new(
   item8.image.attach(io: File.open(Rails.root.join('app/assets/images/chocolate_cookie.jpg')), filename: 'chocolate_cookie.jpg')
   item8.save!
 item9 = Item.new(
-  item_name: "ホワイトチョコレートクッキー",
+  item_name: "ホワイトチョコクッキー",
   item_explanation: "ホワイトチョコのさくさくクッキーです。",
   item_price: 300,
   item_genre_id: 1,
@@ -131,13 +131,13 @@ item12 = Item.new(
   item12.image.attach(io: File.open(Rails.root.join('app/assets/images/doughnut.jpg')), filename: 'doughnut.jpg')
   item12.save!
 item13 = Item.new(
-  item_name: "フロランタン",
-  item_explanation: "フロランタンとは厚焼きのサブレ生地にキャラメルでコーティングした​ スライスアーモンドをのせて香ばしく焼き上げたフランス菓子です。",
-  item_price: 300,
-  item_genre_id: 1,
+  item_name: "フレッシュクリームプリン",
+  item_explanation: "1本1本手作りにこだわったプリンはお土産にもぴったり！ じっくり丁寧に蒸し上げたプリンはとろ～りなめらかで昔懐かしい味わい。",
+  item_price: 400,
+  item_genre_id: 3,
   sales_status: true
   )
-  item13.image.attach(io: File.open(Rails.root.join('app/assets/images/florentins.jpg')), filename: 'florentins.jpg')
+  item13.image.attach(io: File.open(Rails.root.join('app/assets/images/pudding.jpg')), filename: 'pudding.jpg')
   item13.save!
 item14 = Item.new(
   item_name: "ハーフ＆ハーフクッキー",
@@ -176,11 +176,11 @@ item17 = Item.new(
   item17.image.attach(io: File.open(Rails.root.join('app/assets/images/orange_cake.jpg')), filename: 'orange_cake.jpg')
   item17.save!
 item18 = Item.new(
-  item_name: "フレッシュクリームプリン",
-  item_explanation: "1本1本手作りにこだわったプリンはお土産にもぴったり！ じっくり丁寧に蒸し上げたプリンはとろ～りなめらかで昔懐かしい味わい。",
-  item_price: 400,
-  item_genre_id: 3,
+  item_name: "フロランタン",
+  item_explanation: "フロランタンとは厚焼きのサブレ生地にキャラメルでコーティングした​ スライスアーモンドをのせて香ばしく焼き上げたフランス菓子です。",
+  item_price: 300,
+  item_genre_id: 1,
   sales_status: true
   )
-  item18.image.attach(io: File.open(Rails.root.join('app/assets/images/pudding.jpg')), filename: 'pudding.jpg')
+  item18.image.attach(io: File.open(Rails.root.join('app/assets/images/florentins.jpg')), filename: 'florentins.jpg')
   item18.save!

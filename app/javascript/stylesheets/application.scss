@@ -75,3 +75,24 @@ margin-bottom: 80px;
   top: 90px;
   right: 10px;
 }
+
+.nisegold {
+  color: #e7c76d;
+}
+
+.fadeIn{
+animation-name:fadeInAnime;
+animation-duration:1s;
+animation-fill-mode:forwards;
+opacity:0;
+}
+
+@keyframes fadeInAnime{
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
