@@ -6,18 +6,19 @@
     <tr>
       <td>購入者</td>
       <td>
-        <%= link_to admin_customer_path do %>
+        <%= link_to admin_customer_path(@order.customer) do %>
         <%= @order.customer.customer_name %>
         <% end %>
       </td>
     </tr>
     <tr>
       <td>注文日</td>
-      <td><%= @order.created_at.strftime("%Y%m%d") %></td>
+      <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
     </tr>
     <tr>
       <td>配送先</td>
       <td>
+        〒
         <%= @order.ships_post_number %>
         <%= @order.ships_address %><br>
         <%= @order.ships_name%>
