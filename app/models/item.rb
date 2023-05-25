@@ -23,7 +23,7 @@ class Item < ApplicationRecord
 
   # アイテム名かアイテム説明に該当するキーワードがひとつでもあれば全てとってくる
   def self.looks(search, word)
-      @items = Item.where("item_name OR item_explanation LIKE?", "%#{word}%")
+      @items = Item.where("item_name LIKE? OR item_explanation LIKE?", "%#{word}%", "%#{word}%")
   end
 
 end

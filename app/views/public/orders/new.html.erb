@@ -1,54 +1,64 @@
+<!--フラッシュ表示-->
+<%= flash[:notice] %>
 <div class = "container">
-  <h1>注文情報入力画面</h1>
-  <h3>支払方法</h3><br>
+  <h5 class = "ml-4 my-4" >注文情報入力画面</h5>
+  <strong>支払方法</strong><br>
   <%= form_with model: @order, url: confirm_orders_path, method: :post, local: true do |f| %>
-    <div>
+    <div class = "ml-4 my-2" >
       <span>
         <%= f.radio_button :payment, Order.payments.key(1), checked: true %>
         <%= f.label :payment_bank, Order.payments_i18n[:bank] %>
-      </span>
+      </span><br>
       <span>
         <%= f.radio_button :payment, Order.payments.key(0), checked: false %>
         <%= f.label :payment_credit, Order.payments_i18n[:credit] %>
       </span>
     </div>
-    <h5>お届け先</h5>
+    <strong>お届け先</strong>
     <!--会員自身の情報-->
-    <div>
+    <div class = "ml-4 mt-2" >
       <%= f.radio_button :address_option, 0, checked: true %>
-      <%= f.label :order_address, "ご自身の住所" %></br>
-      <!--郵便番号-->
-      〒<%= current_customer.post_code %>
-      <!--住所-->
-      <%= current_customer.address %><br>
-      <!--名前-->
-      <%= current_customer.customer_name %>
+      <%= f.label :order_address, "ご自身の住所" %>
+      <div class = "ml-3" >
+        <!--郵便番号-->
+        〒<%= current_customer.post_code %>
+        <!--住所-->
+        <%= current_customer.address %><br>
+        <!--名前-->
+        <%= current_customer.customer_name %>
+      </div>
     </div>
     <!--登録先の住所-->
-    <div>
+    <div class = "ml-4 mt-2" >
       <%= f.radio_button :address_option, 1 %>
-      <%= f.label :order_address, "登録済住所から選択" %><br>
-      <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %><br>
+      <%= f.label :order_address, "登録済住所から選択" %>
+      <div class = "ml-3" >
+        <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %>
+      </div>
     </div>
     <!--新しいお届け先の登録-->
-    <div>
+    <div class = "ml-4 my-2" >
       <%= f.radio_button :address_option, 2 %>
       <%= f.label :order_address, "新しいお届け先" %>
-      <table>
-        <tr>
-          <td class='col-3'><%= f.label :ships_post_number, "郵便番号(ハイフンなし)" %></td>
-          <td class='col-9'><%= f.text_field :ships_post_number, :placeholder => "0000000" %></td>
-        </tr>
-        <tr>
-          <td class='col-3'><%= f.label :ships_address, "住所" %></td>
-          <td class='col-9'><%= f.text_field :ships_address, :placeholder => "東京都渋谷区代々木神園町0-0", class: "w-100" %></td>
-        </tr>
-        <tr>
-          <td class='col-3'><%= f.label :ships_name, "宛名" %></td>
-          <td class='col-9'><%= f.text_field :ships_name, :placeholder => "令和道子" %></td>
-        </tr>
-      </table>
+      <!--<div class = "ml-3" >-->
+        <table>
+          <tr>
+            <td class='col-3'><%= f.label :ships_post_number, "郵便番号(ハイフンなし)" %></td>
+            <td class='col-9'><%= f.text_field :ships_post_number, :placeholder => "0000000" %></td>
+          </tr>
+          <tr>
+            <td class='col-3'><%= f.label :ships_address, "住所" %></td>
+            <td class='col-9'><%= f.text_field :ships_address, :placeholder => "東京都渋谷区代々木神園町0-0", class: "w-100" %></td>
+          </tr>
+          <tr>
+            <td class='col-3'><%= f.label :ships_name, "宛名" %></td>
+            <td class='col-9'><%= f.text_field :ships_name, :placeholder => "令和道子" %></td>
+          </tr>
+        </table>
+      <!--</div>-->
     </div>
-    <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+    <div class = "text-center mt-3 mb-4" >
+      <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+    </div>
   <% end %>
 </div>

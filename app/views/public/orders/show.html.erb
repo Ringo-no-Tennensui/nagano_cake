@@ -29,7 +29,7 @@
     <table class = "table">
       <tr>
         <td>商品合計</td>
-        <td><%= @total %></td>
+        <td><%= @total.to_s(:delimited) %></td>
       </tr>
       <tr>
         <td>配送料</td>
@@ -40,7 +40,7 @@
       </tr>
       <tr>
         <td>ご請求額</td>
-        <td><%= @order.pay_price %></td>
+        <td><%= @order.pay_price.to_s(:delimited) %></td>
       </tr>
     </table>
   </div>
@@ -57,9 +57,9 @@
       <% @order.order_details. each do |order_detail| %>
         <tr>
           <td><%= order_detail.item.item_name %></td>
-          <td><%= order_detail.item_price %></td>
+          <td><%= order_detail.item_price.to_s(:delimited) %></td>
           <td><%= order_detail.quantity %></td>
-          <td><%= order_detail.total_price %></td>
+          <td><%= order_detail.total_price.to_s(:delimited) %></td>
         </tr>
       <% end %>
     </table>
