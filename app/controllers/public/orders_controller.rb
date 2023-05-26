@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
     # カートの中に商品が入っている場合
     if @carts.any?
       @order = Order.new
-      @shipping_addresses = current_customer.shipping_addresses.all
+      @shipping_addresses = current_customer.shipping_addresses
     # カートの中に商品がない場合オーダーには進めない
     else
     #今現在のページ
@@ -42,7 +42,7 @@ class Public::OrdersController < ApplicationController
       @order.ships_name = current_customer.last_name + current_customer.first_name
     # collection.selectであれば
     elsif params[:order][:address_option] == "1"
-      ship = ShippingAddress.find_by(params[:order][:customer_id])
+      ship = ShippingAddress.find(params[:order][:address_id])
       # 配送先住所を登録していないのであれば１のラジオボタンを押しても先には進めない
       if current_customer.shipping_addresses.exists?
       @order.ships_post_number = ship.ships_post_number
