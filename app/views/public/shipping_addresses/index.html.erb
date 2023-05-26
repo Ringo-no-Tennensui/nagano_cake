@@ -1,31 +1,31 @@
   <!--フラッシュ表示-->
   <%= flash[:notice] %>
   <%= flash[:alert] %>
-<h2>配送先登録/一覧</h2>
-
-
-<%= form_with model: @shipping_address do |f| %>
-  <table>
-  <%= f.hidden_field :customer_id, :value => current_customer.id %>
-  <tr>
-    <td><%= f.label :"郵便番号（ハイフンなし）" %></td>
-    <td><%= f.text_field :ships_post_number, placeholder: "0000000" %></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><%= f.label :"住所" %></td>
-    <td><%= f.text_field :ships_address, size:58, placeholder: "東京都渋谷区代々木神園町0-0" %></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><%= f.label :"宛名" %></td>
-    <td><%= f.text_field :ships_name, placeholder: "令和道子" %></td>
-    <td><%= f.submit "新規登録", class:"btn-success" %></td>
-  </tr>
-  </table>
-<% end %>
-
-  <table class = "table">
+<div class = "ml-5">
+  <h5 class = "ml-5 my-4"><strong>配送先登録/一覧</strong></h5>
+  <%= form_with model: @shipping_address do |f| %>
+    <table>
+    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <tr>
+      <td><%= f.label :"郵便番号（ハイフンなし）" %></td>
+      <td><%= f.text_field :ships_post_number, placeholder: "0000000" %></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><%= f.label :"住所" %></td>
+      <td><%= f.text_field :ships_address, size:58, placeholder: "東京都渋谷区代々木神園町0-0" %></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><%= f.label :"宛名" %></td>
+      <td><%= f.text_field :ships_name, placeholder: "令和道子" %></td>
+      <td><%= f.submit "新規登録", class:"btn-success" %></td>
+    </tr>
+    </table>
+  <% end %>
+</div>
+<div class = "ml-4 mr-5 mt-5">
+  <table class ="table table-bordered">
     <tr>
       <th>郵便番号</th>
       <th>住所</th>
@@ -43,5 +43,5 @@
       </td>
     </tr>
     <% end %>
-
   </table>
+</div>
