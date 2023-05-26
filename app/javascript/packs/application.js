@@ -4,16 +4,21 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
+
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import "jquery";
+import jQuery from "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application" 
+import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
+global.$ = jQuery;
+window.$ = jQuery;
+
 Rails.start()
-Turbolinks.start()
+
 ActiveStorage.start()
+
+require("jquery")

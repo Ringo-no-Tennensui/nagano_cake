@@ -1,2 +1,32 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container-md">
+  <%= flash[:notice] %>
+  <h2>注文履歴一覧</h2>
+  <table class = "table">
+    <tr bgcolor="#BFC5CA">
+      <td>購入日時</td>
+      <td>購入者</td>
+      <td>注文個数</td>
+      <td>注文ステータス</td>
+    </tr>
+    <% @orders.reverse.each do |order| %>
+    <tr>
+      <!--購入日時をクリックで注文履歴詳細へ飛ぶ-->
+      <td><%= link_to admin_order_path(order) do %><%= order.created_at.strftime("%Y/%m/%d") %><% end %></td>
+      <!--customerモデルのcustomer_nameメソッドを使用-->
+      <td><%= order.customer.customer_name %></td>
+      <!--注文詳細から注文個数を呼び出し-->
+      <td>
+        <!--カウント数をゼロにする-->
+        <% count = 0 %>
+        <!--注文詳細の商品の注文数をカウントに足していく-->
+        <% order.order_details.each do |order_detail| %>
+         <% count += order_detail.quantity %>
+        <% end %>
+        <%= count %>
+      </td>
+      <!--注文ステータスを日本語に変換-->
+      <td><%= order.order_status_i18n %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'searchs/search'
   # 管理者側のルーティング設定
   namespace :admin do
     resources :orders, only:[:show, :update]
@@ -13,18 +14,32 @@ Rails.application.routes.draw do
   # 会員側のルーティング設定
   scope module: :public do
     resources :shipping_addresses, only:[:index, :edit, :create, :update, :destroy]
-    resources :orders, only:[:new, :index, :show, :create]
-    post 'orders/confirm'
-    get 'orders/thanks'
-    resources :cart_items, only:[:index, :create, :update, :destroy]
-    delete 'cart_items/destroy_all'
-    resource :customers, only:[:edit, :update]
-    get 'customers/mypage' =>'customers#show'
-    get 'customers/confirm'
-    patch 'customers/withdraw'
+    resources :orders, only:[:new, :index, :show, :create] do
+      collection do
+        post 'confirm'
+        get 'thanks'
+      end
+    end
+
+    resources :carts, only:[:index, :create, :update, :destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+
+    get 'customers/mypage' => 'customers#show'
+    resource :customers, only:[:edit, :update,] do
+    collection do
+      get 'confirm'
+      patch 'withdraw'
+
+      end
+    end
+
     resources :items, only:[:show, :index]
     root to: 'homes#top'
     get '/about' =>'homes#about'
+    get '/genre/:id' =>'homes#index', as: 'index'
   end
 
 # 顧客用
@@ -40,4 +55,5 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end

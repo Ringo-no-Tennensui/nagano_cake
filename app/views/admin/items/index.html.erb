@@ -1,39 +1,46 @@
 <div class="container-md">
   <!--フラッシュ表示-->
   <%= flash[:notice] %>
-  <table>
-    <tr class="row">
-      <td>
-        <div class="col">
-        <h2>商品一覧</h2>
-        </div>
-      </td>
-      <td>
-        <!--アイコンから新規商品登録へ行ける-->
-        <%= link_to new_admin_item_path, class:"col col-lg-2" do %>
-          <i class="far fa-plus-circle"></i>
-        <% end %>
-      </td>
+  <div class= "row">
+    <div class= "col"><h2>商品一覧</h2></div> 
+    <!--アイコンから新規商品登録へ行ける-->
+    <%= link_to new_admin_item_path, class: "col col-lg-2" do %>
+        <h3><i class="fas fa-plus-circle"></i></h3>
+    <% end %>
+    <div class= "col col-lg-2">
+    </div>
+  </div>
+  <table class="table mx-auto">
     </tr>
-  </table>
-  <table class="mx-auto">
-    <tr>
+    <tr bgcolor="#BFC5CA">
       <td>商品ID</td>
       <td>商品名</td>
-      <td>税抜価格</td>
+      <td class ="text-right">税抜価格</td>
       <td>ジャンル</td>
       <td>ステータス</td>
     </tr>
+    <!--アイテムを１０件表示して名前から商品詳細に飛べる-->
+    <% @items.each do |item| %>
     <tr>
-      <!--アイテムを１０件表示して名前から商品詳細に飛べる-->
-      <%= @items.each do |item| %>
-      <td><%= item.id %></td>
-      <td><% link_to admin_item_path do%><%= item.item_name %><% end %></td>
-      <td><%= item.item_price %></td>
-      <td><%= item.genre_id %></td>
-      <td><%= item.sales_status %></td>
+      <td class="col-1"><%= item.id %></td>
+      <td class="col-3"><%= link_to admin_item_path(item) do%><%= item.item_name %><% end %></td>
+      <td class="text-right col-2"><%= item.item_price.to_s(:delimited) %>円</td>
+      <td class="col-2"><%= item.item_genre.genre %></td>
+      <td>
+        <!--販売ステータスを一覧で表示するための記述-->
+      <% if item.sales_status == "sale" %>
+        <p style = "color: #4ec51e;">販売中</p>
+      <% else %>
+        <p style = "color: #ff3838;">売切れ</p>
       <% end %>
+      </td>
     </tr>
+    </tr>
+    <% end %>
   </table>
-  <%= paginate @items %>
+  <div class ="row">
+    <div class ="mx-auto">
+     <%= paginate @items %>
+   </div>
+  </div>
 </div>

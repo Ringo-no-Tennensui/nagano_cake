@@ -1,2 +1,89 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+  <!--フラッシュ表示-->
+  <%= flash[:alert] %>
+<div class=container>
+  <%= form_with model: @customer, url: customers_path do |f| %>
+    <%#= render "public/shared/error_messages", resource: resource %>
+  <h4>会員情報編集</h4>
+  <style>table,td {width: 70%;}</style>
+    <table>
+      <tr>
+        <td>氏名</td>
+        <td>
+          <div class="field", style="ime-mode:active">
+            <% f.label :last_name %>
+            <%= f.text_field :last_name, autofocus: true, placeholder: "令和" %>
+          </div>
+        </td>
+        <td>
+          <div class="field">
+            <% f.label :first_name %>
+            <%= f.text_field :first_name, placeholder: "道子" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>フリガナ</td>
+        <td>
+        <div class="field">
+          <% f.label :last_name_kana %>
+          <%= f.text_field :last_name_kana, placeholder: "レイワ" %>
+      　</div>
+        </td>
+        <td>
+          <div class="field">
+            <% f.label :first_name_kana %>
+            <%= f.text_field :first_name_kana, placeholder: "ミチコ" %>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>郵便番号</td>
+        <td>
+          <div class="field">
+            <% f.label :post_code %>
+            <%= f.text_field :post_code, placeholder: "0000000" %>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td colspan="3">
+          <div class="field">
+            <% f.label :address %>
+            <%= f.text_field :address, size:58, placeholder: "東京都渋谷区代々木神園町0-0" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>電話番号</td>
+        <td>
+          <div class="field">
+            <% f.label :phone_number %>
+            <%= f.text_field :phone_number, placeholder: "0000000000" %>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td>
+          <div class="field">
+            <% f.label :email %>
+            <%= f.email_field :email, placeholder: "sample@example.com" %>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <%= f.submit "編集内容を保存", class:"btn btn-success" %>
+        </td>
+        <td>
+          <%= link_to "退会する", confirm_customers_path, data: { confirm: '退会しますか?' } , class:"btn btn-danger" %>
+        </td>
+      </tr>
+    </table>
+  <% end %>

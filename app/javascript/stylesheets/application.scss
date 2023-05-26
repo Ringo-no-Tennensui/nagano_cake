@@ -1,2 +1,291 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.top-message{
+  background-color: #001A43CA;
+}
+
+.stroke{
+  background: linear-gradient(90deg, #a38131 0%, #e7c76d 33%, #ffe6c5 62%, #e3c05d 83%, #9d874e 100%);
+  background: -webkit-linear-gradient(0deg, #a38131 0%, #e7c76d 33%, #ffe6c5 62%, #e3c05d 83%, #9d874e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.item-image{
+  width: 200px;
+  height: 140px;
+}
+
+.item-image-card{
+  width: 95%;
+  height: 140px;
+}
+.cart-item-image{
+  width: 100px;
+  height: 70px;
+}
+
+.show-item-image{
+  width: 300px;
+  height: 210px;
+}
+
+.header_inner {
+position: absolute;
+top: 15px;
+margin-left: 5%;
+}
+
+.navbar{
+width: 100%;
+height: 80px;
+margin-bottom: 80px;
+}
+
+.title{
+  position: absolute;
+  left: 25%;
+}
+
+.backdiv{
+  background-image: url("/assets/wallpaper1.jpg");
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: -5;
+  background-size: cover;               /* 全画面 */
+  background-attachment: fixed;         /* 固定 */
+  background-position: center center;   /* 縦横中央 */
+}
+
+.gold{
+  background: linear-gradient(90deg, #a38131 0%, #e7c76d 33%, #ffe6c5 62%, #e3c05d 83%, #9d874e 100%);
+  background: -webkit-linear-gradient(0deg, #a38131 0%, #e7c76d 33%, #ffe6c5 62%, #e3c05d 83%, #9d874e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.golden{
+  background: linear-gradient(#DA8E00);
+  background: -webkit-linear-gradient(-45deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03, #DA8E00, #EDAC06, #F7DE05, #ECB802, #EDAC06);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.item_cd{
+  padding: 10px;
+  border-radius: 10px 10px 10px 10px;
+  border: 2px solid gold;
+}
+
+
+
+.translation_missing, .page{
+  padding: 0px 10px;
+}
+
+.serch_inner {
+  position: absolute;
+  top: 90px;
+  right: 40px;
+}
+
+.nisegold {
+  color: #e7c76d;
+}
+
+.lineTrigger{
+  position: relative; /* 枠線が書かれる基点*/
+  opacity:0;
+}
+
+.lineTrigger.lineanime{
+  animation-name:lineAnimeBase;
+  animation-duration:0.5s;
+  animation-fill-mode:forwards;
+}
+
+@keyframes lineAnimeBase{
+  from {
+    opacity:0;
+  }
+
+  to {
+    opacity:1;
+}
+}
+
+/*上下線*/
+.lineTrigger::before,
+.lineTrigger::after{
+  position: absolute;
+  content:"";
+  width:0;
+  height:1px;
+  background:#001A43;/* 枠線の色*/
+}
+
+/*左右線*/
+.line2::before,
+.line2::after{
+  position: absolute;
+  content:"";
+  width: 1px;
+  height:0;
+  background:#001A43;/* 枠線の色*/
+}
+
+/*上線*/
+.lineTrigger::before {
+  top:0;
+  left:0;
+}
+
+.lineTrigger.lineanime::before {
+  animation: lineAnime .125s linear 0s forwards;/*表示されて0秒後に上線が0.5秒かけて表示*/
+}
+
+/*右線*/
+.line2::before{
+  top:0;
+  right:0;
+}
+
+.lineTrigger.lineanime .line2::before {
+  animation: lineAnime2 .125s linear .125s forwards;/*表示されて0.5秒後に右線が0.5秒かけて表示*/
+}
+
+/*下線*/
+.lineTrigger::after {
+  bottom:0;
+  right:0;
+}
+
+.lineTrigger.lineanime::after {
+  animation: lineAnime .125s linear .25s forwards;/*表示されて1秒後に下線が0.5秒かけて表示*/
+}
+
+/*左線*/
+.line2::after{
+  bottom:0;
+  left:0;
+}
+
+.lineTrigger.lineanime .line2::after {
+  animation: lineAnime2 .125s linear .375s forwards;/*表示されて1.5秒後に左線が0.5秒かけて表示*/
+}
+
+@keyframes lineAnime {
+  0% {width:0%;}
+    100%{width:100%;}
+}
+
+@keyframes lineAnime2 {
+  0% {height:0%;}
+    100%{height:100%;}
+}
+
+/*枠線内側の要素*/
+
+.lineTrigger.lineanime .lineinappear{
+  animation: lineInnerAnime .125s linear .375s forwards;/*1.5秒後に中央のエリアが0.5秒かけて表示*/
+  opacity: 0;/*初期値を透過0にする*/
+}
+
+@keyframes lineInnerAnime{
+  0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+.btnripple3{
+    /*波紋の基点とするためrelativeを指定*/
+  position: relative;
+    /*リンクの形状*/
+  display:inline-block;
+  margin:0 10px 20px 10px;
+    text-decoration: none;
+    color: #333;
+    outline: none;
+}
+
+/*波形の設定*/
+.btnripple3:hover::before {
+    content: '';
+    /*絶対配置で波形の位置を決める*/
+    position: absolute;
+    left:30%;
+    top:0;
+    /*波形の形状*/
+    border: 1px solid #e7c76d;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /*はじめは不透明*/
+  opacity:1;
+    /*アニメーションの設定*/
+    animation:1s circleanime2 forwards;
+}
+
+/*波形が広がるアニメーション*/
+@keyframes circleanime2{
+  0%{
+    transform: scale(0);
+  }
+  100%{
+    transform:scale(2);
+    opacity: 0;
+  }
+}
+
+/*矢印の設定*/
+.btnripple3::after {
+    content: '';
+    /*絶対配置で矢印の位置を決める*/
+    position: absolute;
+    top: 30%;
+    right: -20px;
+    /*矢印の形状*/
+    width: 5px;
+    height: 5px;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    transform: rotate(45deg);
+}
+
+.btnshine{
+    /*キラッと光る基点とするためrelativeを指定*/
+  position: relative;
+    /*ボタンの形状*/
+  display:inline-block;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    outline: none;
+    overflow: hidden;
+}
+
+/*キラッと光る*/
+.btnshine::before {
+  content: '';
+    /*絶対配置でキラッと光るの位置を決める*/
+  position: absolute;
+  top: 0;
+  left: -75%;
+    /*キラッと光る形状*/
+    width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+  transform: skewX(-25deg);
+}
+
+/*hoverした際の移動のアニメーション*/
+.btnshine:hover::before {
+  animation: shine 0.7s;
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}

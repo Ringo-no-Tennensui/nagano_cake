@@ -1,0 +1,65 @@
+<div class="container">
+    <% if admin_signed_in? %>
+    <div class='col-md-10'>
+      <h2><%= @word %>の検索結果</h2>
+      <p>[全<%= @customers.count %>件]</p>
+      <table class ="table">
+      <tr bgcolor="#BFC5CA">
+        <td>会員ID</td>
+        <td>氏名</td>
+        <td>メールアドレス</td>
+        <td>ステータス</td>
+      </tr>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td><%= link_to admin_customer_path(customer) do %><%= customer.customer_name %><% end %></td>
+            <td><%= customer.email %></td>
+          <% if customer.member_status == "exist" %>
+            <td style = "color: #4ec51e;">有効</td>
+          <% else %>
+            <td style = "color: #ff3838;">退会</td>
+          <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <% else %>
+    <div class="row">
+    <div class="col-md-2">
+      <%= render 'public/homes/genre', genres: @genres %>
+    </div>
+    <div class='col-md-10'>
+      <h2><%= @word %>の検索結果</h2>
+        <p>[全<%= @items.count %>件]</p>
+      <div class ="item-box">
+        <div class = "row">
+        <% @items.each do |item| %>
+          <div class ="col-md-3 mb-3 text-center p-2">
+            <div class="lineTrigger lineanime">
+              <div class="line2">
+                <div class="lineinappear">
+                  <a href="/items/<%= item.id %>" class="card h-100 m-0"
+                    style="background-color: #001A43; text-decoration: none;">
+                    <%= image_tag item.get_image(200,200), class: "item-image-card mt-1 mx-auto" %><br>
+                    <div class ="card-body" style="background-color: #001A43;">
+                    <strong class = "gold card-title"><%= item.item_name %></strong>
+                      <p class="gold card-text">¥<%= item.tax_price.to_s(:delimited) %></p>
+                    </div>
+                    <% if item.sales_status == "sale" %>
+                      <p class ="card-text" style = "color: #63ED01;" >販売中</p>
+                    <% else %>
+                      <p class ="card-text" style = "color: #ff89b1;" >売切れ</p>
+                    <% end %>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

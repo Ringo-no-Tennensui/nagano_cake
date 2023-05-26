@@ -1,2 +1,41 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container">
+  <%= flash[:notice] %>
+  <h2>商品詳細</h2>
+  <div class="row">
+    <div class="col-md-3 mr-5">
+    <%= image_tag @item.get_image(300,210), class: "show-item-image", style: "margin: auto;" %>
+    </div>
+    <div class="col-xs-2 col-md-7">
+    <table>
+      <tr>
+        <td>商品名</td>
+        <td><%= @item.item_name %></td>
+      </tr>
+      <tr>
+        <td>商品説明</td>
+        <td><%= @item.item_explanation %></td>
+      </tr>
+      <tr>
+        <td>ジャンル</td>
+        <td><%= @item.item_genre.genre %></td>
+      </tr>
+      <tr>
+        <!--税込価格と税抜価格を表示-->
+        <td>税込価格<br>(税抜価格)</td>
+        <td><%= @item.tax_price.to_s(:delimited) %>(<%= @item.item_price.to_s(:delimited) %>)円</td>
+      </tr>
+      <tr>
+        <td>販売ステータス</td>
+        <!--販売ステータスを詳細画面に表示するためを表示-->
+        <% if @item.sales_status == "sale" %>
+          <td style = "color: #4ec51e;">販売中</td>
+        <% else %>
+          <td style = "color: #ff3838;">売切れ</td>
+        <% end %>
+      </tr>
+    </table>
+    <!--item_editに飛べるリンク-->
+    <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success mt-5" %>
+  </div>
+  </div>
+</div>

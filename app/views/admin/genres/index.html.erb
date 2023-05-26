@@ -1,7 +1,7 @@
 <div class="container-md">
   <h2>ジャンル一覧・追加</h2>
+  <%= form_with model: @genres, url:admin_genres_path, metod: :post, local: true do |f| %>
   <table class="mt-5 mb-5">
-    <%= form_with model: @genres, url:admin_genres_path, metod: :post, local: true do |f| %>
     <tr>
       <td>ジャンル名</td>
       <td>
@@ -9,8 +9,8 @@
       </td>
       <td><%= f.submit '新規登録', class:"btn btn-sm btn-success" %></td>
     </tr>
-    <% end %>
   </table>
+  <% end %>
   <table class="table">
     <div class="row">
     <tr>
